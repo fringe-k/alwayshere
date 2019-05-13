@@ -1,0 +1,7 @@
+ <block>
+     <button bindtap='finish' class="finishrec">
+          <text class="finisher">完 成</text>
+     </button>
+     
+
+ </block>

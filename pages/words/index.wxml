@@ -1,0 +1,33 @@
+<!--pages/words/index.wxml-->
+<view class="swiper-tab">
+    <view class="swiper-tablist {{currentTab==0?'on':''}}" id="0" bindtap="tabClick">收件箱</view>
+    <view class="swiper-tablist {{currentTab==1?'on':''}}" id="1" bindtap="tabClick">寄件箱</view>
+</view>
+
+<swiper current="{{currentTab}}" class="swiper-box" bindchange="bindChange" duration="300">
+    <swiper-item class="swiper-item">       
+        <scroll-view scroll-y="true" class="scroll">
+           <view wx:for="{{messages}}" wx:key="poperty">
+             <view wx:if="{{item.readflag}}"  class="btnopen" bindtap="read">
+               <view class="header">{{item.header}}</view>
+               <view class="dateshow">{{item.date}}</view>
+             </view>
+             <view wx:else  class="btnshut" bindtap="write">
+               <view class="header">{{item.header}}</view>
+               <view class="dateshow">{{item.date}}</view>
+             </view>
+           </view>
+        </scroll-view>
+        <button bindtap='gotowriting' class="circle"></button>
+    </swiper-item>
+    <swiper-item class="swiper-item">
+      <scroll-view scroll-y="true" class="scroll2">
+        <view wx:for="{{messages}}" wx:key="poperty">
+             <view  class="btnopen" bindtap="read">
+               <view class="header">{{item.header}}</view>
+               <view class="dateshow">{{item.date}}</view>
+             </view>
+        </view>
+      </scroll-view>
+    </swiper-item>  
+</swiper>

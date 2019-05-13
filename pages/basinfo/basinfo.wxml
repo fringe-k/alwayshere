@@ -1,0 +1,31 @@
+<!--pages/basinfo/basinfo.wxml-->
+<block>
+  <view class="showimage">
+        <view class="circle1"/>
+        <view class="circle2"/>
+  </view>
+  <view class="inputsex">
+        <text style="margin:5%;" >性别</text>
+       <picker bindchange="sexbindPickerChange"  range="{{sexarray}}">
+             <view class="input">
+              {{sex}}
+            </view>
+       </picker>
+        <view class='arrow1'/>
+  </view>
+  <view class="divideline"/>
+  <view class="inputbirth">
+        <text style="margin:5%;" >我的生日</text>
+        <input  placeholder="{{mybirth}}"  bindinput="getInputmybirth" 
+                  class="input2" />
+        <view class='arrow1'/>
+  </view>
+  <view class="divideline"/>
+  <view class="inputbirth">
+        <text style="margin:5%;" >Ta的生日</text>
+        <input  placeholder="{{tabirth}}"  bindinput="getInputtabirth
+                  class="input2" />
+        <view class='arrow1'/>
+  </view>
+  <view class="divideline"/>
+</block>
