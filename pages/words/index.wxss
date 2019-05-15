@@ -5,7 +5,10 @@ page{
 
 }
 page{
-  font-family: "微软雅黑"
+  font-family: "微软雅黑";
+  width:100%;
+  height:100%;
+  overflow: hidden;
 }
 .swiper-tab{
  width: 100%;
@@ -27,8 +30,7 @@ page{
  border-bottom: 5rpx solid #1890FF;
 }
 .swiper-box{
- height: 1200rpx;
-
+ height: 90%;
 }
 .swiper-item{
  padding-top: 50rpx;
@@ -42,7 +44,7 @@ page{
 }
 .scroll2{
   width:100%;
-  height:1000rpx;
+  height:100%;
 }
 .btnshut{
   margin-top: 40rpx;
