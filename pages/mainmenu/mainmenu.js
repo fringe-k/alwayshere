@@ -18,6 +18,11 @@ Page({
       url: '../words/index',
     })
   },
+  toyuni: function () {
+    wx.navigateTo({
+      url: '../photos/photos',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
