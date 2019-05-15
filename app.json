@@ -1,16 +1,17 @@
 {
   "pages": [
-    "pages/loading/index",
-    "pages/mainmenu/mainmenu",
-    "pages/words/index",
-    "pages/letters/index",
-    "pages/writing/writing",
-    "pages/writetoopen/writetoopen",
-    "pages/photos/photos",
-    "pages/peinfo/prinfo",
-    "pages/basinfo/basinfo",
-    "pages/annivresary/annivresary",
-    "pages/helpsandrecalls/help",
+    "pages/loading/index",      
+    "pages/mainmenu/mainmenu",   
+    "pages/words/index",        
+    "pages/letters/index", 
+    "pages/writing/writing",  
+    "pages/writetoopen/writetoopen", 
+    "pages/photos/photos",      
+    "pages/photosup/up",        
+    "pages/peinfo/prinfo",       
+    "pages/basinfo/basinfo",     
+    "pages/annivresary/annivresary", 
+    "pages/helpsandrecalls/help",   
     "pages/logs/logs"
   ],
   "window": {
