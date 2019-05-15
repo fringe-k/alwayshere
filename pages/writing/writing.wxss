@@ -1,5 +1,7 @@
 page{
   font-family: "微软雅黑";
+  width:100%;
+  height: 100%;
 }
 .finishrec{
   margin-right:40rpx;
@@ -17,3 +19,63 @@ page{
 .finisher{
   font-size: 30rpx;
 }
+.divideline{
+  margin-top: 3%;
+  height:5rpx;
+  width:90%;
+  margin-left:6%;
+  background:rgb(222, 223, 219);
+}
+.inputheader{
+  margin-left:5%;
+  margin-top:3%;
+  font-size:40rpx;
+}
+.content{
+  margin-left:5%;
+  margin-top:3%;
+  height:60%;
+  
+}
+.textarea{
+  width:100%;
+  height:100%;
+}
+.ways{
+  display:flex;
+  flex-direction: column;
+  margin-left:5%;
+
+  width:100%;
+}
+.checkbox{
+  display:flex;
+  margin-top:50rpx；
+}
+.divideline2{
+  margin-top: 3%;
+  height:5rpx;
+  width:90%;
+  
+  background:rgb(175, 175, 174);
+}
+.checkbox2{
+  display:flex;
+  flex-direction: row;
+  margin-top:1%;
+}
+.picker{
+  font-size:30rpx;
+  padding-top:1.5%;
+  margin-left:100rpx;
+  color: gray;
+}
+.divideline3{
+  margin-top: 3%;
+  height:5rpx;
+  width:100%;
+  
+  background:rgb(175, 175, 174);
+}
+
+

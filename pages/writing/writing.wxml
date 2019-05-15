@@ -2,6 +2,35 @@
      <button bindtap='finish' class="finishrec">
           <text class="finisher">完 成</text>
      </button>
-     
-
+     <view class="inputheader">
+        <input  placeholder="{{headercontent}}"  bindinput="getInputmyheader" 
+                  class="input1" value="{{header}}" maxlength="10"/>
+     </view>
+     <view class="divideline"/>
+     <view class="content" id="textwrap">
+        <textarea maxlength="800" style="height:{{textheight}};"  placeholder="{{contentcontent}}"
+          fixed="true"  class="textarea"/>
+     </view>
+     <view class="ways">
+        <text>开启方式</text>
+        <text style="font-size:30rpx;color:gray;">定时开启表示到达固定天数后信件自动开启</text>
+        <view class="divideline3"/>
+        <checkbox-group  bindchange="checkboxChange">
+          <view style="display:block">
+            <view class="checkbox">
+                <checkbox value="1" checked="{{writing.checked1}}" />
+                {{writing.value1}}               
+            </view> 
+            <view class="divideline2"/>
+             <view class="checkbox2">
+                <checkbox value="2" checked="{{timing.checked2}}" />
+                {{timing.value2}}
+                <picker bindchange="daysPickerChange"  range="{{days}}">
+                     <view class="picker">点击选择日期：{{daystosent}}</view>
+                </picker> 
+            </view> 
+            <view class="divideline2"/>  
+           </view>           
+        </checkbox-group>
+     </view>
  </block>
