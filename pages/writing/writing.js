@@ -24,6 +24,19 @@ Page({
     animationData: {}
   },
 
+  hideModal:function(e){
+    var that = this;
+    var animation = wx.createAnimation({
+      duration: 1000,
+      timingFunction: 'linear'
+    })
+    that.animation = animation
+    animation.translateY(200).step()
+    that.setData({
+      animationData: animation.export(),
+      chooseSize: false
+    })
+  },
   chooseSezi: function (e) {
     console.log(1);
     // 用that取代this，防止不必要的情况发生
