@@ -1,33 +1,34 @@
-// pages/peinfo/prinfo.js
+// pages/main/main.js
+let app;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    togetherdate: 360,
+    nextdate: 360
   },
-  tobasicinfo: function () {
+  gotoinfo: function () {
     wx.navigateTo({
-      url: '../basinfo/basinfo',
+      url: '../pairInfo/pairInfo',
     })
   },
-  toanniversary: function () {
+  totashuo: function () {
     wx.navigateTo({
-      url: '../annivresary/annivresary',
+      url: '../words/index',
     })
   },
-  tohelps: function () {
+  toyuni: function () {
     wx.navigateTo({
-      url: '../helpsandrecalls/help',
+      url: '../photos/photos',
     })
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    app=getApp();
   },
 
   /**

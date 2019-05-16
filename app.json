@@ -1,16 +1,15 @@
 {
   "pages": [
-    "pages/loading/index",      
-    "pages/mainmenu/mainmenu",   
+    "pages/loading/loading",
+    "pages/main/main",
     "pages/words/index",        
     "pages/letters/index", 
     "pages/writing/writing",  
     "pages/writetoopen/writetoopen", 
-    "pages/photos/photos",      
-    "pages/photosup/up",        
-    "pages/peinfo/prinfo",       
+    "pages/photos/photos",
+    "pages/pairInfo/pairInfo",
     "pages/basinfo/basinfo",     
-    "pages/annivresary/annivresary", 
+    "pages/anniversary/anniversary",
     "pages/helpsandrecalls/help",   
     "pages/logs/logs"
   ],

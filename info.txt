@@ -1,0 +1,13 @@
+"pages/loading/index",       //加载
+"pages/main/main",   //主页面
+"pages/words/index",         //收信页面
+"pages/letters/index",       //看信页面
+"pages/writing/writing",     //主动写信页面
+"pages/writetoopen/writetoopen", //回复信页面(这个页面的信不需要给定回复方式)
+"pages/photos/photos",       //照片墙页面    （在写中）
+"pages/photosup/up",         //上传照片页面   （在写中）
+"pages/pairInfo/pairInfo",       //个人信息页面    （生日还是城市没定）
+"pages/basinfo/basinfo",     //基本信息设置
+"pages/anniversary/anniversary", //纪念日设置
+"pages/helpsandrecalls/help",   //帮助反馈
+"pages/logs/logs"

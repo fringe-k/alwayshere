@@ -1,4 +1,4 @@
-// pages/loading/index.js
+// pages/pairInfo/pairInfo.js
 Page({
 
   /**
@@ -7,15 +7,27 @@ Page({
   data: {
 
   },
+  tobasicinfo: function () {
+    wx.navigateTo({
+      url: '../basinfo/basinfo',
+    })
+  },
+  toanniversary: function () {
+    wx.navigateTo({
+      url: '../anniversary/anniversary',
+    })
+  },
+  tohelps: function () {
+    wx.navigateTo({
+      url: '../helpsandrecalls/help',
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.redirectTo({
-      url: '../mainmenu/mainmenu',
-    })
-   
+
   },
 
   /**

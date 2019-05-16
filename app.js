@@ -1,17 +1,26 @@
 //app.js
 App({
+    globalData: {
+        cookieHeader: null,
+        userInfo: null,
+        host: "https://localhost",
+        user:null,
+        theOtherUser:null,
+        pair:null
+    },
     onLaunch: function () {
         let gbd = this.globalData;
         wx.request({
             method: "GET",
             url: gbd.host + "/sessionId",
             success(res) {
-                gbd.sessionId = res.data;
+                //Set down the cookie
                 gbd.cookieHeader = {
                     'Cookie':"JSESSIONID="+res.data
                 };
+                //Prepared for Login
                 wx.login({
-                    success: res => {
+                    success(res){
                         wx.request({
                             method: "POST",
                             url: gbd.host + "/user/login",
@@ -37,11 +46,5 @@ App({
                 });
             }
         });
-    },
-    globalData: {
-        sessionId: null,
-        cookieHeader: null,
-        userInfo: null,
-        host: "https://localhost"
     }
 });
