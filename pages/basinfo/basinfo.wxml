@@ -13,19 +13,19 @@
        </picker>
         <view class='arrow1'/>
   </view>
-  <view class="divideline"/>
+  <view class="separator"/>
   <view class="inputbirth">
         <text style="margin:5%;" >我的生日</text>
         <input  placeholder="{{mybirth}}"  bindinput="getInputmybirth" 
                   class="input2" />
         <view class='arrow1'/>
   </view>
-  <view class="divideline"/>
+  <view class="separator"/>
   <view class="inputbirth">
         <text style="margin:5%;" >Ta的生日</text>
         <input  placeholder="{{tabirth}}"  bindinput="getInputtabirth
                   class="input2" />
         <view class='arrow1'/>
   </view>
-  <view class="divideline"/>
+  <view class="separator"/>
 </block>

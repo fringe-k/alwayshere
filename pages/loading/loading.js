@@ -1,21 +1,18 @@
 // pages/loading/loading.js
+import Request from "../../utils/request";
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.redirectTo({
-      url: '../main/main',
-    })
-   
   },
 
   /**
@@ -29,8 +26,31 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    let app = getApp();
 
+    //等待app.js完成登录
+    if(!app.hasLogin){
+      app.loginCallback=this.onLoginCallback;
+    }else{
+      this.onLoginCallback();
+    }
   },
+
+  onLoginCallback:function(){
+    let req = new Request(getApp().globalData);
+    req.getUser()
+        .then(req.getPair)
+        .then(this.onDataReadyPromise);
+  },
+
+  onDataReadyPromise:function(){
+    return new Promise((resolve => {
+      wx.redirectTo({
+        url: '../main/main',
+      });
+    }))
+  },
+
 
   /**
    * 生命周期函数--监听页面隐藏

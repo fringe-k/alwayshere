@@ -19,7 +19,7 @@ page{
 .finisher{
   font-size: 30rpx;
 }
-.divideline{
+.separator{
   margin-top: 3%;
   height:5rpx;
   width:90%;

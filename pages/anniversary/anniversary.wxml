@@ -13,7 +13,7 @@
        </picker>
         <view class='arrow1'/>
   </view>
-  <view class="divideline"/>
+  <view class="separator"/>
   <view class="inputneda">
         <text style="margin:5%;" >下次见面的日子</text>
        <picker mode="date" bindchange="nedabindPickerChange" start="2019-01-01" end="2099-01-01" >
@@ -23,5 +23,5 @@
        </picker>
         <view class='arrow1'/>
   </view>
-  <view class="divideline"/>
+  <view class="separator"/>
 </block>

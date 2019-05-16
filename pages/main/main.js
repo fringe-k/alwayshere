@@ -9,17 +9,17 @@ Page({
     togetherdate: 360,
     nextdate: 360
   },
-  gotoinfo: function () {
+  toPageInfo: function () {
     wx.navigateTo({
       url: '../pairInfo/pairInfo',
     })
   },
-  totashuo: function () {
+  toPageHeSpeak: function () {
     wx.navigateTo({
       url: '../words/index',
     })
   },
-  toyuni: function () {
+  toPageWithYou: function () {
     wx.navigateTo({
       url: '../photos/photos',
     })

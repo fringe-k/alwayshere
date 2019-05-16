@@ -2,7 +2,7 @@
 <block>
 <view class="view1">
     <button></button>
-    <button bindtap='gotoinfo' class="circle"></button>
+    <button bindtap='toPageInfo' class="circle"></button>
     <view class="first1">
         <text class="text1" space="ensp">我们在一起 </text>
         <text class="datetext1" >{{togetherdate}}</text>
@@ -14,14 +14,14 @@
         <text class="text2" space="ensp"> 天</text>
     </view>
 </view>
-<view class="divideline"></view>
-<view class="view2" bindtap="totashuo">     
-    <view class="headtitle">| Ta说  </view>
+<view class="separator"></view>
+<view class="view2" bindtap="toPageHeSpeak">
+    <view class="head-title">| Ta说  </view>
     <view class="subtitle">用一封信 写出心中的那首情诗    </view>   
 </view>
-<view class="view2" bindtap="toyuni">  
-<view class="divideline"></view>   
-    <view class="headtitle">| 与你  </view>
+<view class="view2" bindtap="toPageWithYou">
+<view class="separator"></view>
+    <view class="head-title">| 与你  </view>
     <view class="subtitle">随手一拍 分享你与Ta的生活日常</view>   
 </view>
 </block>

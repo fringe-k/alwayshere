@@ -57,7 +57,7 @@
   margin-left:29%;
   margin-top:2%;
 }
-.divideline{
+.separator{
   margin-top: 3%;
   height:5rpx;
   width:80%;

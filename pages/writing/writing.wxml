@@ -6,7 +6,7 @@
         <input  placeholder="{{headercontent}}"  bindinput="getInputmyheader" 
                   class="input1" value="{{header}}" maxlength="10"/>
      </view>
-     <view class="divideline"/>
+     <view class="separator"/>
      <view class="content" id="textwrap">
         <textarea maxlength="800" style="height:{{textheight}};"  placeholder="{{contentcontent}}"
           fixed="true"  class="textarea"/>

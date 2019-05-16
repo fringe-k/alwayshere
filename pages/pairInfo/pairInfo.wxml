@@ -9,18 +9,18 @@
         <text style="margin-left:20%;">基本信息设置</text>
         <view class='arrow1'></view>
     </view>
-    <view class="divideline"></view>
+    <view class="separator"></view>
     <view bindtap="toanniversary" class="changeline2">
         <view class="icon2"></view>
         <text style="margin-left:20%;margin-top:0.5%;">纪念日设置</text>
         <view class='arrow2'></view>
     </view>   
-     <view class="divideline"></view>
+     <view class="separator"></view>
      <view bindtap="tohelps" class="changeline2">
         <view class="icon3"></view>
         <text style="margin-left:20%;margin-top:0.5%;">帮助与反馈</text>
         <view class='arrow3'></view>
     </view>   
-     <view class="divideline"></view>
+     <view class="separator"></view>
    
 </block>
