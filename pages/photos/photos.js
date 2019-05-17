@@ -1,66 +1,56 @@
-// pages/photos/photos.js
+
+var util = require("../../utils/util.js")
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
+    history: [
+      {
+        date: "2019-07-10 10:21",
+        img1: "",
+        word1: "你吃了吗",
+        img2: "",
+        word2: "吃了榴莲",
+        year: "",
+        month: "",
+        date: ""
+      },
+      {
+        date: "2020-07-10 10:21",
+        img1: "",
+        word1: "你吃了吗",
+        img2: "",
+        word2: "吃了榴莲",
+        year: "",
+        month: "",
+        date: ""
+      }
+    ]
 
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onLoad: function () {
+    var that = this;
+    for (let i = 0; i < that.data.history.length; i++) {
+      /*var stringTime = that.data.history[i].date;*/
+      var stringTime = "2019-07-10 10:21"
+      var timestamp2 = Date.parse(new Date(stringTime));
+      var newDate = new Date();
+      newDate.setTime(timestamp2);
+      var myyear = "history[" + i + "].year";
+      var mymonth = "history[" + i + "].month";
+      var myday = "history[" + i + "].day";
+      that.setData({
+        [myyear]: newDate.getFullYear(),
+        [mymonth]: newDate.getMonth() + 1,
+        [myday]: newDate.getDate()
+      });
+      console.log(that.data.history[i].year + "年" + that.data.history[i].month + "月" + that.data.history[i].day + "日");
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
 
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   }
-})
+
+
+});
