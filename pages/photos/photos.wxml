@@ -1,2 +1,25 @@
-<!--pages/photos/photos.wxml-->
-<text>pages/photos/photos.wxml</text>
+<view class="background">
+    
+</view>
+ <view  class="historynews"  >
+    <text class="text_show">{{item.year}}年{{item.month}}月{{item.day}}日</text> 
+    <view class="divideline2"/>  
+    <view class="photoarea">
+        <view class="my">
+            <image src="../../images/3.png" class="photo"/>
+            <text>{{item.word1}}</text>
+        </view>
+        <view class="and"/>
+        <view class="ta">
+           <image/>
+            <text>{{item.word2}}</text>
+        </view>
+    </view>
+</view>
+ <view wx:for="{{history}}" wx:key="poperty" class="historynews"  >
+    <text class="text_show">{{item.year}}年{{item.month}}月{{item.day}}日</text> 
+    <view class="divideline2"/>  
+    <view class="photoarea">
+        
+    </view>
+</view>
