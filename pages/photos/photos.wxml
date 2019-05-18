@@ -1,18 +1,32 @@
-<view class="background">
-    
+<view class="background">  
 </view>
- <view  class="historynews"  >
-    <text class="text_show">{{item.year}}年{{item.month}}月{{item.day}}日</text> 
+ <view  wx:if="{{isload}}" class="historynews" >
+    <text class="text_show">{{today}}</text> 
     <view class="divideline2"/>  
     <view class="photoarea">
-        <view class="my">
-            <image src="../../images/3.png" class="photo"/>
-            <text>{{item.word1}}</text>
+        <view class="my" bindtap='todetail'>
+            <image src="../../images/1.jpg" class="photo"/>
+            <text class="text">{{item.word1}}</text>
         </view>
         <view class="and"/>
         <view class="ta">
-           <image/>
-            <text>{{item.word2}}</text>
+           <image src="../../images/1.jpg" class="photo"/>
+            <text class="text">{{item.word2}}</text>
+        </view>
+    </view>
+</view>
+ <view  wx:else class="historynews"  >
+    <text class="text_show">{{today}}</text> 
+    <view class="divideline2"/>  
+    <view class="photoarea">
+        <view class="my" bindtap='tophotoup'>
+            <image src="../../images/1.jpg" class="photo"/>
+            <text class="text">{{item.word1}}</text>
+        </view>
+        <view class="and"/>
+        <view class="ta">
+           <image src="../../images/1.jpg" class="photo"/>
+            <text class="text">{{item.word2}}</text>
         </view>
     </view>
 </view>
@@ -20,6 +34,14 @@
     <text class="text_show">{{item.year}}年{{item.month}}月{{item.day}}日</text> 
     <view class="divideline2"/>  
     <view class="photoarea">
-        
+        <view class="my" bindtap='todetail'>
+            <image src="../../images/1.jpg" class="photo"/>
+            <text class="text">{{item.word1}}</text>
+        </view>
+        <view class="and"/>
+        <view class="ta" bindtap='todetail'>
+           <image src="../../images/1.jpg" class="photo"/>
+            <text class="text">{{item.word2}}</text>
+        </view>
     </view>
 </view>

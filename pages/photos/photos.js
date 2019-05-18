@@ -10,21 +10,17 @@ Page({
         word1: "你吃了吗",
         img2: "",
         word2: "吃了榴莲",
-        year: "",
-        month: "",
-        date: ""
       },
       {
         date: "2020-07-10 10:21",
         img1: "",
         word1: "你吃了吗",
         img2: "",
-        word2: "吃了榴莲",
-        year: "",
-        month: "",
-        date: ""
+        word2: "吃了榴莲dsajdiasjdiasdsadasdasdasjsiad",
       }
-    ]
+    ],
+    today: "",
+    isload: false
 
   },
   onLoad: function () {
@@ -45,12 +41,29 @@ Page({
       });
       console.log(that.data.history[i].year + "年" + that.data.history[i].month + "月" + that.data.history[i].day + "日");
     }
+    /*below is today*/
+    var timestamp = Date.parse(new Date());
+    var date = new Date(timestamp);
+    //获取年份  
+    var Y = date.getFullYear();
+    //获取月份  
+    var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+    //获取当日日期 
+    var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+    var string = Y + '年' + M + '月' + D + '日'
+    that.setData({
+      today: string
+    })
+
+
   },
 
-  onShow: function () {
-
-
+  tophotoup: function(e){
+    wx.navigateTo({
+      url: '../photosup/up',
+    })
   }
+
 
 
 });
