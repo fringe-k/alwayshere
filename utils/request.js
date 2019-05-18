@@ -38,7 +38,7 @@ class Request {
                         },
                         success(res){
                             let app = getApp();
-                            data.hasLogin = true;
+                            app.globalData.hasLogin = true;
                             if(app.loginCallback){
                                 app.loginCallback();
                             }

@@ -29,7 +29,7 @@ Page({
     let app = getApp();
 
     //等待app.js完成登录
-    if(!app.hasLogin){
+    if(!app.globalData.hasLogin){
       app.loginCallback=this.onLoginCallback;
     }else{
       this.onLoginCallback();
