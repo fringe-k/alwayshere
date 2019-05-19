@@ -131,7 +131,7 @@ class Request {
                 data: info,
                 success(res) {
                     data.userInfo = res.data;
-                    resolve();
+                    resolve(res.data);
                 }
             });
         });

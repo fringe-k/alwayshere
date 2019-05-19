@@ -7,52 +7,48 @@ Page({
      * 页面的初始数据
      */
     data: {
-        userInfo: {
-            avatarUrl:
-                "https://wx.qlogo.cn/mmopen/vi_32/V5Q9iapkWRXb5TibIFnM2ACZgfFnSib1Du6SJYLaNuqoeLzc2dWecCQdYWF3StVrvODpNBvHOtiardM6If33MoICww/132",
-            birthday:
-                null,
-            gender:
-                "男"
-        },
-        genderRange:['男','女']
+        userInfo: null,
+        genderRange: ['男', '女']
     },
 
 
     genderPickerChange(e) {
         let data = this.data;
-        let newUserInfo = data.userInfo;
         let newGender = data.genderRange[e.detail.value];
-        newUserInfo.gender = newGender;
-        this.setData({
-            userInfo: newUserInfo
-        });
-        let req = new Request(getApp().globalData);
-        req.updateUserInfo({
-            gender:newGender
-        });
-
+        if (data.userInfo.gender !== newGender) {
+            let newUserInfo = data.userInfo;
+            newUserInfo.gender = newGender;
+            this.setData({
+                userInfo: newUserInfo
+            });
+            new Request(getApp().globalData)
+                .updateUserInfo({
+                    gender: newGender
+                });
+        }
     },
-    birthdayPickerChange(e){
+    birthdayPickerChange(e) {
         let data = this.data;
-        let newUserInfo = data.userInfo;
-        let newGender = e.detail.value;
-        console.log(e.detail.value);
-        // newUserInfo.gender = newGender;
-        // this.setData({
-        //     userInfo: newUserInfo
-        // });
-        // let req = new Request(getApp().globalData);
-        // req.updateUserInfo({
-        //     gender:newGender
-        // });
+        if (data.userInfo.birthday !== e.detail.value) {
+            let newUserInfo = data.userInfo;
+            newUserInfo.birthday = e.detail.value;
+            this.setData({
+                userInfo: newUserInfo
+            });
+            new Request(getApp().globalData)
+                .updateUserInfo({
+                    birthday: e.detail.value
+                });
+        }
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        this.setData({
+            userInfo: getApp().globalData.userInfo
+        });
     },
 
     /**

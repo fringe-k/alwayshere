@@ -1,9 +1,19 @@
 <!--pages/anniversary/anniversary.wxml-->
 <block>
     <view class="pair-portraits">
-        <view class="circle1"/>
-        <view class="circle2"/>
-    </view> 
+        <view class="portrait left">
+            <!--suppress HtmlDeprecatedTag -->
+            <image class="portrait-image" wx:if="{{userInfo.avatarUrl!=null}}" src="{{userInfo.avatarUrl}}"></image>
+            <!--suppress HtmlDeprecatedTag -->
+            <image class="portrait-image" wx:else src="{{addImg}}"></image>
+        </view>
+        <view class="portrait right">
+            <!--suppress HtmlDeprecatedTag -->
+            <image class="portrait-image" wx:if="{{theOtherUserInfo.avatarUrl!=null}}" src="{{theOtherUserInfo.avatarUrl}}"></image>
+            <!--suppress HtmlDeprecatedTag -->
+            <image class="portrait-image" wx:else src="{{addImg}}"></image>
+        </view>
+    </view>
     <view class="inputanni">
         <text style="margin:5%;" >纪念日</text>
        <picker mode="date" bindchange="annibindPickerChange" start="2019-01-01" end="2099-01-01" >

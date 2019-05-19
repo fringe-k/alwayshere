@@ -18,8 +18,8 @@
     <view class="separator"></view>
     <view class="input-item">
         <label style="margin:5%;">我的生日</label>
-        <picker mode="date" bindinput="birthdayPickerChange" class="input2">
-            <view>
+        <picker mode="date" bindchange="birthdayPickerChange" class="input2">
+            <view style="color: gray">
                 <text>{{userInfo.birthday === null?'空':userInfo.birthday}}</text>
             </view>
         </picker>

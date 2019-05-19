@@ -1,26 +1,31 @@
 // pages/anniversary/anniversary.js
 Page({
+    /**
+     * 页面的初始数据
+     */
+    data: {
+        theOtherUserInfo: null,
+        userInfo: null
+    },
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
-    anniversary: "未填写",
-    nextdate: "未填写"
-  },
-
-  anniPickerChange(e) {
-    var that = this;
-    that.setData({
-      anniversary: e.detail.value
-    })
-  },
-  nextDatePickerChange(e) {
-    var that = this;
-    that.setData({
-      nextdate: e.detail.value
-    })
-  }
-
-  
-})
+    anniPickerChange(e) {
+        var that = this;
+        that.setData({
+            anniversary: e.detail.value
+        })
+    },
+    nextDatePickerChange(e) {
+        var that = this;
+        that.setData({
+            nextdate: e.detail.value
+        })
+    },
+    onLoad: function (options) {
+        let gbd = getApp().globalData;
+        this.setData({
+            userInfo: gbd.userInfo,
+            theOtherUserInfo: gbd.theOtherUserInfo,
+            addImg: gbd.host + "/resource/image/add"
+        });
+    }
+});
