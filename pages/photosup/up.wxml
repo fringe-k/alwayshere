@@ -1,0 +1,10 @@
+<view class="content">
+        <textarea maxlength="100" style="height:{{textheight}};"  placeholder="{{contentcontent}}"
+          fixed="true"  class="textarea" bindinput="ContentInput"/>
+        <view class="textarea-counter">{{contentCount}}/100</view>
+ </view>
+ <view class="image-wrap">    
+      <image class="image" src="{{src}}" mode="aspectFill" bindtap="handleImagePreview"></image>    
+      <view class="image-remover"  bindtap="removeImage">删除</view>
+</view>
+ <button type="default" size="mini" bindtap="chooseImage" >添加图片</button>
