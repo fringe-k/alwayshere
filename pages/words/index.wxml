@@ -8,24 +8,24 @@
     <swiper-item class="swiper-item">       
         <scroll-view scroll-y="true" class="scroll">
            <view wx:for="{{messages}}" wx:key="poperty">
-             <view wx:if="{{item.readflag}}"  class="btnopen" bindtap="read">
+             <view wx:if="{{item.readflag}}"  class="btn-open" bindtap="read">
                <view class="header">{{item.header}}</view>
-               <view class="dateshow">{{item.date}}</view>
+               <view class="date-show">{{item.date}}</view>
              </view>
-             <view wx:else  class="btnshut" bindtap="write">
+             <view wx:else  class="btn-shut" bindtap="write">
                <view class="header">{{item.header}}</view>
-               <view class="dateshow">{{item.date}}</view>
+               <view class="date-show">{{item.date}}</view>
              </view>
            </view>
         </scroll-view>
-        <button bindtap='gotowriting' class="circle"></button>
+        <button bindtap='toWriting' class="circle"></button>
     </swiper-item>
     <swiper-item class="swiper-item">
       <scroll-view scroll-y="true" class="scroll2">
         <view wx:for="{{messages}}" wx:key="poperty">
-             <view  class="btnopen" bindtap="read">
+             <view  class="btn-open" bindtap="read">
                <view class="header">{{item.header}}</view>
-               <view class="dateshow">{{item.date}}</view>
+               <view class="date-show">{{item.date}}</view>
              </view>
         </view>
       </scroll-view>

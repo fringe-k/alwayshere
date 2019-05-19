@@ -56,7 +56,7 @@ Page({
   },
 
   /*to writing*/
-  gotowriting: function () {
+  toWriting: function () {
     wx.navigateTo({
       url: '../writing/writing',
     })

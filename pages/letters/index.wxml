@@ -5,10 +5,10 @@
 <view class="rec" />
 <swiper current="{{currentTab}}" class="swiper-box" bindchange="bindChange" duration="300">
     <swiper-item class="swiper-item">
-        <view  class="comingletter" > 
+        <view  class="coming-letter" > 
              <view class="header"> {{header}}</view>     
              <view class="separator"/>
-             <scroll-view class="neirong" scroll-y="true">
+             <scroll-view class="content" scroll-y="true">
                    <text space="emsp">{{neirong}}</text>
              </scroll-view>
         </view>
@@ -16,14 +16,14 @@
     <swiper-item class="swiper-item">
        <scroll-view class="scroll" scroll-y="true" >
              <view wx:for="{{historynews}}" wx:key="poperty">
-                  <view wx:if="{{item.ismine}}" class="mynews">  
+                  <view wx:if="{{item.ismine}}" class="my-news">  
                      <image src="{{item.touxiang}}" style="height:100rpx;width:100rpx;positon:fixed;"/>
-                     <text class="text_show">{{item.text}}{{item.text}}{{item.text}}</text> 
+                     <text class="text-show">{{item.text}}{{item.text}}{{item.text}}</text> 
                                     
                   </view>
-                  <view wx:else class="fromnews">
+                  <view wx:else class="from-news">
                      <image src="{{item.touxiang}}" style="height:100rpx;width:100rpx;positon:fixed;"/>
-                     <text class="text_show">{{item.text}}{{item.text}}{{item.text}}{{item.text}}{{item.text}}{{item.text}}{{item.text}}{{item.text}}</text>                             
+                     <text class="text-show">{{item.text}}{{item.text}}{{item.text}}{{item.text}}{{item.text}}{{item.text}}{{item.text}}{{item.text}}</text>                             
                   </view>
                   <view class="divideline2"/>
              </view>

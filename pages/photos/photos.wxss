@@ -16,7 +16,7 @@ page{
   display:flex;
   flex-direction:column-reverse;
 }
-.historynews{
+.history-news{
   color:rgba(121,93,93,1);
   width:100%;
   height:30%;
@@ -32,7 +32,7 @@ page{
   width:90%;
   background:rgb(193, 154, 154);
 }
-.photoarea{
+.photo-area{
   display:flex;
   flex-direction:row;
   width:100%;

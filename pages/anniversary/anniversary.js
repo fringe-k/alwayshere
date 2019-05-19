@@ -9,13 +9,13 @@ Page({
     nextdate: "未填写"
   },
 
-  annibindPickerChange(e) {
+  anniPickerChange(e) {
     var that = this;
     that.setData({
       anniversary: e.detail.value
     })
   },
-  nedabindPickerChange(e) {
+  nextDatePickerChange(e) {
     var that = this;
     that.setData({
       nextdate: e.detail.value

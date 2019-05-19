@@ -58,7 +58,7 @@ Page({
 
   },
 
-  tophotoup: function(e){
+  toPhotoUp: function(e){
     wx.navigateTo({
       url: '../photosup/up',
     })

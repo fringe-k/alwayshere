@@ -27,7 +27,7 @@ overflow: hidden;
     border-radius: 250px;
    font-size:0;
 }
-.datetext1{
+.date-text1{
   font-size: 90rpx;
   color:white;
 
@@ -36,7 +36,7 @@ overflow: hidden;
   color:white;
   font-size:60rpx;
 }
-.datetext2{
+.date-text2{
   font-size: 50rpx;
   color:white;
 
