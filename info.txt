@@ -7,7 +7,7 @@
 "pages/photos/photos",       //照片墙页面    （在写中）
 "pages/photosup/up",         //上传照片页面   （在写中）
 "pages/pairInfo/pairInfo",       //个人信息页面    （生日还是城市没定）
-"pages/basinfo/basinfo",     //基本信息设置
+"pages/basicInfo/basicInfo",     //基本信息设置
 "pages/anniversary/anniversary", //纪念日设置
 "pages/helpsandrecalls/help",   //帮助反馈
 "pages/logs/logs"

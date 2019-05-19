@@ -7,7 +7,9 @@ App({
         host: "https://localhost",
 
         hasLogin: false,
-        user: null
+        userInfo: null,
+        theOtherUserInfo:null,
+        pair: null
     },
     onLaunch: function () {
         let req = new Request(this.globalData);

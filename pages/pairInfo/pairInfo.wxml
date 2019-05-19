@@ -1,22 +1,32 @@
-<!--pages/pairInfo/prinfo.wxml-->
+<!--pages/pairInfo/pairInfo.wxml-->
 <block>
-    <view class="showimage">
-        <view class="circle1"></view>
-        <view class="circle2"></view>
+    <view class="pair-portraits">
+        <view class="portrait left">
+            <!--suppress HtmlDeprecatedTag -->
+            <image class="portrait-image" wx:if="{{userInfo.avatarUrl!=null}}" src="{{userInfo.avatarUrl}}"></image>
+            <!--suppress HtmlDeprecatedTag -->
+            <image class="portrait-image" wx:else src="{{addImg}}"></image>
+        </view>
+        <view class="portrait right">
+            <!--suppress HtmlDeprecatedTag -->
+            <image class="portrait-image" wx:if="{{theOtherUserInfo.avatarUrl!=null}}" src="{{theOtherUserInfo.avatarUrl}}"></image>
+            <!--suppress HtmlDeprecatedTag -->
+            <image class="portrait-image" wx:else src="{{addImg}}"></image>
+        </view>
     </view>
-    <view bindtap="tobasicinfo" class="changeline">
+    <view bindtap="toBasicInfo" class="item-line">
         <view class="icon1"></view>
         <text style="margin-left:20%;">基本信息设置</text>
         <view class='arrow1'></view>
     </view>
     <view class="separator"></view>
-    <view bindtap="toanniversary" class="changeline2">
+    <view bindtap="toAnniversary" class="item-line">
         <view class="icon2"></view>
         <text style="margin-left:20%;margin-top:0.5%;">纪念日设置</text>
         <view class='arrow2'></view>
     </view>   
      <view class="separator"></view>
-     <view bindtap="tohelps" class="changeline2">
+     <view bindtap="toHelps" class="item-line">
         <view class="icon3"></view>
         <text style="margin-left:20%;margin-top:0.5%;">帮助与反馈</text>
         <view class='arrow3'></view>

@@ -8,7 +8,7 @@
     "pages/writetoopen/writetoopen", 
     "pages/photos/photos",
     "pages/pairInfo/pairInfo",
-    "pages/basinfo/basinfo",     
+    "pages/basicInfo/basicInfo",
     "pages/anniversary/anniversary",
     "pages/helpsandrecalls/help",   
     "pages/logs/logs"

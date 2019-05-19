@@ -1,0 +1,29 @@
+<!--pages/basicInfo/basicInfo.wxml-->
+<block>
+    <view class="pair-portraits">
+        <view class="portrait">
+            <!--suppress HtmlDeprecatedTag -->
+            <image class="portrait-image" src="{{userInfo.avatarUrl}}"></image>
+        </view>
+    </view>
+    <view class="input-item">
+        <label style="margin:5%;">性别</label>
+        <picker bindchange="genderPickerChange" range="{{genderRange}}">
+            <view class="input">
+                <text>{{userInfo.gender}}</text>
+            </view>
+        </picker>
+        <view class='arrow'></view>
+    </view>
+    <view class="separator"></view>
+    <view class="input-item">
+        <label style="margin:5%;">我的生日</label>
+        <picker mode="date" bindinput="birthdayPickerChange" class="input2">
+            <view>
+                <text>{{userInfo.birthday === null?'空':userInfo.birthday}}</text>
+            </view>
+        </picker>
+        <view class='arrow'></view>
+    </view>
+    <view class="separator"></view>
+</block>

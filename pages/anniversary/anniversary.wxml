@@ -1,6 +1,6 @@
 <!--pages/anniversary/anniversary.wxml-->
 <block>
-    <view class="showimage">
+    <view class="pair-portraits">
         <view class="circle1"/>
         <view class="circle2"/>
     </view> 

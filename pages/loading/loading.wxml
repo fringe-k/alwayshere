@@ -1,2 +1,9 @@
 <!--pages/loading/loading.wxml-->
-<text>pages/loading/loading.wxml</text>
+<view>
+    <text>pages/loading/loading.wxml</text>
+
+    <view wx:if="{{!canGetInfo}}">请升级微信版本</view>
+    <button wx:elif="{{!hasInfoAccess}}" open-type="getUserInfo"
+            bindgetuserinfo="getWxUserInfo">授权</button>
+
+</view>
