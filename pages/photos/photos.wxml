@@ -18,7 +18,7 @@
  <view  wx:else class="history-news">
     <text class="text-show">{{today}}</text> 
     <view class="divideline2"/>  
-    <view class="photoarea">
+    <view class="photo-area">
         <view class="my" bindtap='toPhotoUp'>
             <image src="../../images/1.jpg" class="photo"/>
             <text class="text">{{item.word1}}</text>
@@ -33,7 +33,7 @@
  <view wx:for="{{history}}" wx:key="poperty" class="history-news"  >
     <text class="text-show">{{item.year}}年{{item.month}}月{{item.day}}日</text> 
     <view class="divideline2"/>  
-    <view class="photoarea">
+    <view class="photo-area">
         <view class="my" bindtap='toDetail'>
             <image src="../../images/1.jpg" class="photo"/>
             <text class="text">{{item.word1}}</text>
@@ -41,7 +41,7 @@
         <view class="and"/>
         <view class="ta" bindtap='toDetail'>
            <image src="../../images/1.jpg" class="photo"/>
-            <text class="text">{{item.word2}}</text>
+           <text class="text">{{item.word2}}</text>
         </view>
     </view>
 </view>

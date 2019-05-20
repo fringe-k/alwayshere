@@ -11,7 +11,10 @@
             <!--suppress HtmlDeprecatedTag -->
             <image class="portrait-image" wx:if="{{theOtherUserInfo.avatarUrl!=null}}" src="{{theOtherUserInfo.avatarUrl}}"></image>
             <!--suppress HtmlDeprecatedTag -->
-            <image class="portrait-image" wx:else src="{{addImg}}"></image>
+            <button wx:else class="share-button"  class="portrait-image"  wx:else style="background-image:{{addImg}};"  open-type="share">
+                <image class="portrait-image" src="{{addImg}}"></image> 
+                <text> sadasdasdasd</text>
+            </button>
         </view>
     </view>
     <view bindtap="toBasicInfo" class="item-line">

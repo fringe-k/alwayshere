@@ -1,4 +1,4 @@
-<view class="content">
+<view class="content" id="textwrap">
         <textarea maxlength="100" style="height:{{textheight}};"  placeholder="{{contentcontent}}"
           fixed="true"  class="textarea" bindinput="ContentInput"/>
         <view class="textarea-counter">{{contentCount}}/100</view>

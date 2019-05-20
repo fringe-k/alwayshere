@@ -8,7 +8,8 @@ Page({
      */
     data: {
         userInfo: null,
-        genderRange: ['男', '女']
+        genderRange: ['男', '女'],
+   
     },
 
 

@@ -11,6 +11,7 @@
     "pages/basicInfo/basicInfo",
     "pages/anniversary/anniversary",
     "pages/helpsandrecalls/help",   
+    "pages/sharepage/share",
     "pages/logs/logs"
   ],
   "window": {
