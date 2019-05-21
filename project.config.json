@@ -59,14 +59,21 @@
 				{
 					"id": 2,
 					"name": "sharein",
-					"pathName": "pages/main/main",
-					"query": "",
+					"pathName": "pages/sharepage/share",
+					"query": "scene=1007&userInfo=123",
 					"scene": 1007
 				},
 				{
-					"id": -1,
+					"id": 3,
 					"name": "basicInfo",
-					"pathName": "pages/sharepage/share",
+					"pathName": "pages/writing/writing",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "main",
+					"pathName": "pages/letters/index",
 					"query": "",
 					"scene": null
 				}

@@ -13,20 +13,33 @@ Page({
     currentTab: 0,
     historynews: [{
       ismine: false,
-      touxiang: '',
+      touxiang: '../images/1.jpg',
       text: '我爱你'
     }, {
       ismine: true,
-      touxiang: '',
+        touxiang: '../images/1.jpg',
       text: '我爱你'
     }, {
       ismine: false,
-      touxiang: '',
+      touxiang: '../images/1.jpg',
       text: '我爱你'
-    }]
-
-
-
+    },
+      {
+        ismine: false,
+        touxiang: '../images/1.jpg',
+        text: '我爱你'
+      },
+      {
+        ismine: true,
+        touxiang: '../images/1.jpg',
+        text: '我爱你'
+      }],
+    content:"",
+    textAreaContent:"",
+    textheight:"",
+    contentcontent:"想说点什么吗",
+    scrollTop:""
+ 
   },
   tabClick: function (e) {
     var that = this;
@@ -47,6 +60,57 @@ Page({
       currentTab: e.detail.current
     });
   },
+  inputMyWord: function (e) {
+    var that = this;
+    that.setData({
+      content: e.detail.value
+    })
+  },
+ onShow:function(e){
+   var that = this;
+   let id = "#textwrap";
+   let query = wx.createSelectorQuery();//创建查询对象
+   query.select(id).boundingClientRect();//获取view的边界及位置信息
+   query.exec(function (res) {
+     that.setData({
+       textheight: res[0].height + "px"
+     });
+     console.log(that.data.textheight);
+ })
+ },
+
+ sendMessage:function(e){
+   var that=this;
+   var newmessage={
+     ismine: true,
+     touxiang: '../images/1.jpg',
+     text: that.data.content
+   };
+
+   that.data.historynews.push(newmessage);
+   var that=this;
+   console.log(that.data.textAreaContent+"2");
+   console.log(that.data.historynews);
+   var length = that.data.historynews.length
+   that.setData({
+     historynews:that.data.historynews,
+     scrollTop: length*1000,
+     textAreaContent: ""
+   }) 
+   /*console.log(that.data.historynews);
+   console.log(that.data.scrollTop);*/
+ },
+ bindWord:function(e){
+   console.log(e.detail.value);
+   var that=this;
+   that.setData({
+     content:e.detail.value,
+   
+   });
+  
+   
+
+ }
 
 
 })

@@ -33,6 +33,7 @@ Page({
     }
     return {
       title: "我在",
+      desc:"你好，我有一生想和你谈",
       path: "/pages/sharepage/share?url=''&userInfo="+that.userInfo ,    
       success: function (res) {
         // 转发成功

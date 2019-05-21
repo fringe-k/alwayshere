@@ -1,9 +1,11 @@
 <!--pages/loading/loading.wxml-->
-<view>
-    <text>pages/loading/loading.wxml</text>
-
+<view style="display:flex;flex-direction:column;align-items:center;">
     <view wx:if="{{!canGetInfo}}">请升级微信版本</view>
-    <button wx:elif="{{!hasInfoAccess}}" open-type="getUserInfo"
-            bindgetuserinfo="getWxUserInfo">授权</button>
-
+    <view wx:elif="{{!hasInfoAccess}}" class="get-access">
+         <text class="header">登陆授权</text>
+         <text class="desc">为了确保你正常使用我在，请给我在授权用户信息(头像，昵称等)</text>
+         <view class="rec" />
+         <button  open-type="getUserInfo"
+            bindgetuserinfo="getWxUserInfo" class="button">去授权</button>
+    </view>
 </view>

@@ -9,26 +9,28 @@
              <view class="header"> {{header}}</view>     
              <view class="separator"/>
              <scroll-view class="content" scroll-y="true">
-                   <text space="emsp">{{neirong}}</text>
+                   <text space="emsp">{{neirong}}</text>    
              </scroll-view>
         </view>
     </swiper-item>
     <swiper-item class="swiper-item">
-       <scroll-view class="scroll" scroll-y="true" >
+       <scroll-view class="scroll" scroll-y="true" scroll-top="{{scrollTop}}">
              <view wx:for="{{historynews}}" wx:key="poperty">
                   <view wx:if="{{item.ismine}}" class="my-news">  
                      <image src="{{item.touxiang}}" style="height:100rpx;width:100rpx;positon:fixed;"/>
-                     <text class="text-show">{{item.text}}{{item.text}}{{item.text}}</text> 
-                                    
-                  </view>
+                     <text class="text-show">{{item.text}}</text>                          </view>
                   <view wx:else class="from-news">
                      <image src="{{item.touxiang}}" style="height:100rpx;width:100rpx;positon:fixed;"/>
-                     <text class="text-show">{{item.text}}{{item.text}}{{item.text}}{{item.text}}{{item.text}}{{item.text}}{{item.text}}{{item.text}}</text>                             
+                     <text class="text-show">{{item.text}}</text>                             
                   </view>
                   <view class="divideline2"/>
              </view>
        </scroll-view>
-       
+       <view class="content2" id="textwrap">
+         <textarea maxlength="800" style="height:{{textheight}};"  placeholder="{{contentcontent}}"
+          fixed="true" value="{{textAreaContent}}"  bindinput='bindWord' id="mytext" />
+        </view>
+        <button bindtap='sendMessage'>发送</button>
     </swiper-item>  
 </swiper>
 

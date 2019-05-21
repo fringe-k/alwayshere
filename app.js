@@ -15,8 +15,15 @@ App({
         req.session().then(req.login);
     },
   onShow: function (options) {
-    console.log(options);
-    
-  }
+    let app = getApp();
+    var that = this;
+    if(options.scene==1007)
+    {
+      console.log(options.query.userInfo);
+      var that=this;
+      that.globalData.userInfo = options.query.userInfo;
+    }
+  },
+
    
 });

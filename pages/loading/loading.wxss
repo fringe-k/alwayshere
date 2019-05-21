@@ -1,1 +1,41 @@
 /* pages/loading/loading.wxss */
+page{
+  width:100%;
+  height:100%;
+  background-color: gray;
+}
+.get-access{
+  width:600rpx;
+  height:300rpx;
+  background-color: white;
+  display:flex;
+  flex-direction:column; 
+  align-items: center;
+  margin-top:50%;
+}
+.button{
+  width:100%;
+  padding-bottom: 0;
+  color:green;
+  border-radius: 0;
+}
+.button::after {
+    border-radius: 0;
+}
+.header{
+  width:80%;
+  text-align:center;
+  height:100rpx;
+  line-height: 80rpx;
+}
+.desc{
+  width:85%;
+  text-align:center;
+  color:gray;
+  font-size:30rpx;
+   height:100rpx;
+}
+.rec{
+ width: 100%;
+ height: 40rpx;
+}
