@@ -1,5 +1,5 @@
 <!--pages/pairInfo/pairInfo.wxml-->
-<block>
+<block xmlns:wx="http://www.w3.org/1999/xhtml">
     <view class="pair-portraits">
         <view class="portrait left">
             <!--suppress HtmlDeprecatedTag -->
@@ -11,9 +11,9 @@
             <!--suppress HtmlDeprecatedTag -->
             <image class="portrait-image" wx:if="{{theOtherUserInfo.avatarUrl!=null}}" src="{{theOtherUserInfo.avatarUrl}}"></image>
             <!--suppress HtmlDeprecatedTag -->
-            <button wx:else class="share-button"  class="portrait-image"  wx:else style="background-image:{{addImg}};"  open-type="share">
-                <image class="portrait-image" src="{{addImg}}"></image> 
-                <text> sadasdasdasd</text>
+            <button wx:else class="portrait-image share-button" open-type="share">
+                <!--suppress HtmlDeprecatedTag -->
+                <image src="{{addImg}}"></image>
             </button>
         </view>
     </view>

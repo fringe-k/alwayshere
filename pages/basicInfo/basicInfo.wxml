@@ -6,20 +6,20 @@
             <image class="portrait-image" src="{{userInfo.avatarUrl}}"></image>
         </view>
     </view>
-    <view class="input-item">
+    <view class="item-line">
         <label style="margin:5%;">性别</label>
-        <picker bindchange="genderPickerChange" range="{{genderRange}}">
-            <view class="input">
+        <picker bindchange="genderPickerChange" range="{{genderRange}}" class="input">
+            <view>
                 <text>{{userInfo.gender}}</text>
             </view>
         </picker>
         <view class='arrow'></view>
     </view>
     <view class="separator"></view>
-    <view class="input-item">
-        <label style="margin:5%;">我的生日</label>
-        <picker mode="date" bindchange="birthdayPickerChange" class="input2">
-            <view style="color: gray">
+    <view class="item-line">
+        <label style="margin:5%;">生日</label>
+        <picker mode="date" bindchange="birthdayPickerChange" class="input">
+            <view>
                 <text>{{userInfo.birthday === null?'空':userInfo.birthday}}</text>
             </view>
         </picker>

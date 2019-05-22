@@ -1,31 +1,42 @@
 // pages/anniversary/anniversary.js
+import Request from "../../utils/request";
+
 Page({
     /**
      * 页面的初始数据
      */
     data: {
         theOtherUserInfo: null,
-        userInfo: null
+        userInfo: null,
+        memorialDayInfo: null
     },
 
-    anniPickerChange(e) {
-        var that = this;
-        that.setData({
-            anniversary: e.detail.value
-        })
+    memDayPickerChange(e) {
+        this.updateDay("memorialDay", e.detail.value);
     },
-    nextDatePickerChange(e) {
-        var that = this;
-        that.setData({
-            nextdate: e.detail.value
-        })
+    meetDayPickerChange(e) {
+        this.updateDay("nextMeetDay", e.detail.value);
+    },
+    updateDay(attr, value){
+        let data = this.data;
+        if (data.memorialDayInfo[attr] !== value) {
+            let newMemorialDayInfo = data.memorialDayInfo;
+            newMemorialDayInfo[attr] = value;
+            this.setData({
+                memorialDayInfo: newMemorialDayInfo
+            });
+            new Request(getApp().globalData)
+                .updateMemorialDay({
+                    attr: value
+                });
+        }
     },
     onLoad: function (options) {
         let gbd = getApp().globalData;
         this.setData({
             userInfo: gbd.userInfo,
             theOtherUserInfo: gbd.theOtherUserInfo,
-            addImg: gbd.host + "/resource/image/add"
+            memorialDayInfo: gbd.memorialDayInfo
         });
     }
 });

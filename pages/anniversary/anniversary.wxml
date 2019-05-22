@@ -9,29 +9,30 @@
         </view>
         <view class="portrait right">
             <!--suppress HtmlDeprecatedTag -->
-            <image class="portrait-image" wx:if="{{theOtherUserInfo.avatarUrl!=null}}" src="{{theOtherUserInfo.avatarUrl}}"></image>
+            <image class="portrait-image" wx:if="{{theOtherUserInfo.avatarUrl!=null}}"
+                   src="{{theOtherUserInfo.avatarUrl}}"></image>
             <!--suppress HtmlDeprecatedTag -->
             <image class="portrait-image" wx:else src="{{addImg}}"></image>
         </view>
     </view>
-    <view class="inputanni">
-        <text style="margin:5%;" >纪念日</text>
-       <picker mode="date" bindchange="annibindPickerChange" start="2019-01-01" end="2099-01-01" >
-             <view class="input">
-              {{anniversary}}
+    <view class="item-line">
+        <label class="title">纪念日</label>
+        <picker mode="date" bindchange="memDayPickerChange" class="input">
+            <view>
+                <text>{{(memorialDayInfo === null || memorialDayInfo.memorialDay === null)? '空' : memorialDayInfo.memorialDay}}</text>
             </view>
-       </picker>
-        <view class='arrow1'/>
-  </view>
-  <view class="separator"/>
-  <view class="inputneda">
-        <text style="margin:5%;" >下次见面的日子</text>
-       <picker mode="date" bindchange="nedabindPickerChange" start="2019-01-01" end="2099-01-01" >
-             <view class="input2">
-              {{nextdate}}
+        </picker>
+        <view class='arrow'></view>
+    </view>
+    <view class="separator"></view>
+    <view class="item-line">
+        <label class="title">下次见面</label>
+        <picker mode="date" bindchange="meetDayPickerChange" class="input">
+            <view>
+                <text>{{(memorialDayInfo === null || memorialDayInfo.nextMeetDay === null)? '空' :memorialDayInfo.nextMeetDay}}</text>
             </view>
-       </picker>
-        <view class='arrow1'/>
-  </view>
-  <view class="separator"/>
+        </picker>
+        <view class='arrow'></view>
+    </view>
+    <view class="separator"></view>
 </block>

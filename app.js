@@ -4,11 +4,13 @@ import Request from "./utils/request.js";
 App({
     globalData: {
         cookieHeader: null,
-        host: "https://localhost",
+        host: "https://gravity.xmu.edu.cn",
+
         hasLogin: false,
         userInfo: null,
         theOtherUserInfo:null,
-        pair: null
+        pair: null,
+        memorialDayInfo: null
     },
     onLaunch: function (options) {
         let req = new Request(this.globalData);
@@ -25,5 +27,5 @@ App({
     }
   },
 
-   
+
 });

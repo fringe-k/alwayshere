@@ -27,9 +27,15 @@
   border-radius: 250rpx;
   font-size:0;
 }
-
+.share-button{
+  padding: 0;
+}
 .share-button::after{ 
   border:none;
+}
+.share-button image{
+  height: 160rpx;
+  width: 160rpx;
 }
 .item-line{
   width:100%;
