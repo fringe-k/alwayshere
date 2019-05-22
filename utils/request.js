@@ -96,6 +96,24 @@ class Request {
             });
         });
     };
+
+    getMemorialDayInfo = () => {
+        console.log("Start to get memorial day.");
+        let data = this.appData;
+        return new Promise((resolve, reject) => {
+            wx.request({
+                method: "GET",
+                url: data.host + "/pair/memorialDay",
+                header: data.cookieHeader,
+                success(res) {
+                    if (res.statusCode === 200) {
+                        resolve(res.data);
+                    }
+                }
+            });
+        });
+    };
+
     getWxUserInfo = () => {
         console.log("Start to get wx user info.");
         return new Promise((resolve, reject) => {
@@ -108,19 +126,21 @@ class Request {
                             }
                         });
                     } else {
-                        reject({reason: "Not authorized with [scope.userInfo].", code:0});
+                        reject({reason: "Not authorized with [scope.userInfo].", code: 0});
                     }
                 }
             });
         });
     };
+
     updateUserAvatar = (info) => {
         console.log("Start to update user avatar.");
         return this.updateUserInfo({
             avatarUrl: info.avatarUrl
         });
     };
-    updateUserInfo = (info) =>{
+
+    updateUserInfo = (info) => {
         console.log("Start to update user info.");
         let data = this.appData;
         return new Promise((resolve, reject) => {
@@ -135,8 +155,24 @@ class Request {
                 }
             });
         });
-    }
+    };
 
+    updateMemorialDay = (info) => {
+        console.log("Start to update memorial day info.");
+        let data = this.appData;
+        return new Promise((resolve, reject) => {
+            wx.request({
+                method: "POST",
+                url: data.host + "/pair/memorialDay/update",
+                header: data.cookieHeader,
+                data: info,
+                success(res) {
+                    data.memorialDayInfo = res.data;
+                    resolve(res.data);
+                }
+            });
+        });
+    }
 }
 
 export default Request;

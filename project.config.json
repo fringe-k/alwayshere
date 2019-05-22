@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -75,6 +75,13 @@
 					"name": "main",
 					"pathName": "pages/letters/index",
 					"query": "",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "anniversary",
+					"pathName": "pages/anniversary/anniversary",
 					"scene": null
 				}
 			]
