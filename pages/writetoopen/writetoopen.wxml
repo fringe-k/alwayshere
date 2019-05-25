@@ -1,2 +1,14 @@
-<!--pages/writetoopen/writetoopen.wxml-->
-<text>pages/writetoopen/writetoopen.wxml</text>
+ <block>
+     <button bindtap='sending' class="finishrec">
+          <text class="finisher">完 成</text>
+     </button>
+     <view class="inputheader">
+        <input  placeholder="{{headercontent}}"  bindinput="getInputmyheader" 
+                  class="input1" value="{{header}}" maxlength="10"/>
+     </view>
+     <view class="separator"/>
+     <view class="content" id="textwrap">
+        <textarea maxlength="800" auto-height="true"   placeholder="{{contentcontent}}"
+          fixed="true"  class="textarea" bindinput='isWriting'/>
+     </view>
+ </block>

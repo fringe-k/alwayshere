@@ -9,23 +9,23 @@ App({
         hasLogin: false,
         userInfo: null,
         theOtherUserInfo:null,
+        theOtherid:"",
         pair: null,
         memorialDayInfo: null
     },
     onLaunch: function (options) {
         let req = new Request(this.globalData);
         req.session().then(req.login);
+  
     },
   onShow: function (options) {
     let app = getApp();
     var that = this;
     if(options.scene==1007)
     {
-      console.log(options.query.userInfo);
+      console.log(options);
       var that=this;
-      that.globalData.userInfo = options.query.userInfo;
+      that.globalData.theOtherid = options.query.id;
     }
   },
-
-
 });

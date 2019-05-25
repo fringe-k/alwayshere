@@ -1,5 +1,5 @@
  <block>
-     <button bindtap='chooseSezi' class="finishrec">
+     <button bindtap='chooseSize' class="finishrec">
           <text class="finisher">完 成</text>
      </button>
      <view class="inputheader">
@@ -9,11 +9,11 @@
      <view class="separator"/>
      <view class="content" id="textwrap">
         <textarea maxlength="800" style="height:{{textheight}};"  placeholder="{{contentcontent}}"
-          fixed="true"  class="textarea"/>
+          fixed="true"  class="textarea" bindinput='isWriting'/>
      </view>
      <view class='maskLayer' wx:if="{{chooseSize}}" bindtap='hideModal'></view>
      <view class='ways' wx:if="{{chooseSize}}" animation='{{animationData}}'>
-       <view style="margin-left:5%;display:flex;flex-direction:column">
+       <view style="margin-left:2%;display:flex;flex-direction:column">
         <text>开启方式</text>
         <text style="font-size:30rpx;color:gray;">定时开启表示到达固定天数后信件自动开启</text>
         <view class="divideline3"/>
@@ -27,7 +27,7 @@
              <view class="checkbox2">
                 <checkbox value="2" checked="{{timing.checked2}}" />
                 {{timing.value2}}
-                <picker bindchange="daysPickerChange"  range="{{days}}">
+                <picker bindchange="daysPickerChange"  range="{{days}}" value="{{daysToSent}}}">
                      <view class="picker">点击选择日期：{{daystosent}}</view>
                 </picker> 
             </view> 

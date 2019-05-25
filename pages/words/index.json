@@ -1,6 +1,4 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "Ta说",
-  "enablePullDownRefresh": true,
-  "backgroundColor": "#f1045a"
+  "navigationBarTitleText": "Ta说"
 }

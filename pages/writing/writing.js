@@ -1,4 +1,5 @@
 // pages/writing/writing.js
+var util = require("../../utils/util.js")
 Page({
 
   /**
@@ -6,9 +7,9 @@ Page({
    */
   data: {
     headercontent: "请输入标题(最多10字)",
-    header: "",
+    header: "",         //信的标题
     contentcontent: "请写下你的信",
-    content: "",
+    content: "",       //信的内容
     textheight:"",
     writing:{
         value1:"写信开启",
@@ -20,7 +21,12 @@ Page({
     },
     days: ['1天后','2天后','3天后','4天后','5天后','6天后','7天后'],
     daystosent:"未选择",
+    daysToSent:0,
+    dayDuration:0,
+    needwriting:false,
     chooseSize: false,
+    errormessage:false,
+    checkBoxValue:[],
     animationData: {}
   },
 
@@ -37,7 +43,7 @@ Page({
       chooseSize: false
     })
   },
-  chooseSezi: function (e) {
+  chooseSize: function (e) {
     console.log(1);
     // 用that取代this，防止不必要的情况发生
     var that = this;
@@ -67,26 +73,14 @@ Page({
       })
     }, 200)
   },
-  
-  sending: function (e) {
-    var that = this;
-    var animation = wx.createAnimation({
-      duration: 1000,
-      timingFunction: 'linear'
-    })
-    that.animation = animation
-    animation.translateY(200).step()
-    that.setData({
-      animationData: animation.export(),
-      chooseSize: false
-    })
-  },
 
 daysPickerChange:function(e){
   var that = this;
   that.setData({
-    daystosent: that.data.days[e.detail.value]
-  })
+    daystosent: that.data.days[e.detail.value],
+    daysToSent: parseInt(e.detail.value)+1
+  });
+  console.log(that.data.daysToSent)
 },
   getInputmyheader: function (e) {
     var that = this;
@@ -96,29 +90,14 @@ daysPickerChange:function(e){
   },
 
   checkboxChange:function(e) {
+    var that=this;
     console.log('checkbox发生change事件，携带value值为：', e.detail.value)
+    that.setData({
+      checkBoxValue: e.detail.value
+    })
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-
     onShow: function() {
       var that = this;
-
       let id = "#textwrap";
       let query = wx.createSelectorQuery();//创建查询对象
       query.select(id).boundingClientRect();//获取view的边界及位置信息
@@ -129,39 +108,92 @@ daysPickerChange:function(e){
         console.log(res[0].height);
       });
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  isWriting: function(e) {
+    var that = this;
+    that.setData({
+      content: e.detail.value,
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  sending: function (e) {
+    let that = this;
+    let gbd = getApp().globalData;
+    var box = that.data.checkBoxValue;
+    console.log(box);
+    if (box.indexOf("1") > -1 && box.indexOf("2") > -1)
+    {
+      that.setData({
+        needwriting: true,
+        dayDuration: that.data.daysToSent,
+      });
+    }
+    else if (box.indexOf("1") > -1 && box.indexOf("2") == -1)
+    {
+      that.setData({
+        needwriting: true,
+        dayDuration: 0,
+     });
+    }
+   else if (box.indexOf("1") == -1 && box.indexOf("2") >-1)
+   {
+      that.setData({
+        needwriting: false,
+        dayDuration: that.data.daysToSent,
+      });
+   }
+   else{
+     that.setData({
+       errormessage:true
+     })
+   }
+    if (that.data.errormessage)
+    {
+      wx.showModal({
+        title: '提示',
+        content: '请选择开启方式',
+        cancelText: "取消",
+        confirmText: "确定",
+        success: function (res) {}   
+          });
+      that.setData({
+        errormessage: false
+      })
+    }
+   else {
+      var TIME = util.formatTime(new Date());
+      /*var message = {
+        time: TIME,
+        dayDuration: that.data.dayDuration,
+        needReply: that.data.needwriting,
+        read: false,
+        title: that.data.header,
+        text: that.data.content
+      };
+      console.log(message);*/
+      wx.request({
+        method: "PUT",
+        url: gbd.host + "/pair/letters",
+        header: gbd.cookieHeader,
+        data: {
+          time: TIME,
+          dayDuration: that.data.dayDuration,
+          needReply: that.data.needwriting,
+          read: false,
+          title: that.data.header,
+          text: that.data.content
+        }
+      });
+      var animation = wx.createAnimation({
+        duration: 1000,
+        timingFunction: 'linear'
+      })
+      that.animation = animation
+      animation.translateY(200).step()
+      that.setData({
+        animationData: animation.export(),
+        chooseSize: false
+      })
+    }
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

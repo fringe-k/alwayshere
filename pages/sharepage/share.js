@@ -9,13 +9,38 @@ Page({
   data: {
     canGetInfo: wx.canIUse('button.open-type.getUserInfo'),
     hasInfoAccess: false,
-    userInfo:"",
-    pairInfo:""
   },
-  onShow: function (options) {
+
+  onShow: function () {
     let app = getApp();
-    var that=this;
-  
+    //等待app.js完成登录
+    if (!app.globalData.hasLogin) {
+      app.loginCallback = this.onLoginCallback;
+    } else {
+      this.onLoginCallback();
+    }
+  },
+
+  onLoginCallback: function () {
+    let page = this;
+    let req = new Request(getApp().globalData);
+    req.getUserInfo()
+      .then(req.getPair)
+      .then(req.getWxUserInfo)
+      .then(req.updateUserAvatar)
+      .then(this.onDataReadyPromise)
+      .catch(r => {
+        if (r.code === 0) {
+          page.setData({
+            hasInfoAccess: false
+          });
+        }
+      });
+  },
+  getWxUserInfo: function (res) {
+    let req = new Request(getApp().globalData);
+    req.updateUserAvatar(JSON.parse(res.detail.rawData))
+      .then(this.onDataReadyPromise);
   },
 
   onLoginCallback: function () {
@@ -37,22 +62,32 @@ Page({
     var that=this;
     let req = new Request(getApp().globalData);
     req.updateUserAvatar(JSON.parse(res.detail.rawData))
-      .then(this.onDataReadyPromise);
     that.setData({
       hasInfoAccess: true
-    });
-    wx.request({
-      method: "POST",
-      url: data.host + "/pair",
-      header: data.cookieHeader,
-      data: {
-        leftUserId:that.userInfo,
-        rightUserId:that.pairInfo
-        },
-      success(res) {
-        data.userInfo = res.data;
-        resolve(res.data);
+    })
+  },
+  confirmBind:function(e){
+    let that = this;
+    let gbd = getApp().globalData;
+    console.log(gbd.theOtherid);
+    console.log(gbd.userInfo.id);
+    wx.showModal({
+      title: '提示',
+      content: '您确定绑定吗',
+      cancelText: "取消",
+      confirmText: "确定",
+      success:function(res){
+        wx.request({
+          method: "PUT",
+          url: gbd.host + "/pair",
+          header: gbd.cookieHeader,
+          data: {
+            leftWeUserId: gbd.userInfo.id,
+            rightWeUserId: gbd.theOtherid
+          },
+        })
       }
   })
- }
+  }
+
 })

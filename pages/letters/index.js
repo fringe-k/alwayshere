@@ -86,10 +86,8 @@ Page({
      touxiang: '../images/1.jpg',
      text: that.data.content
    };
-
    that.data.historynews.push(newmessage);
    var that=this;
-   console.log(that.data.textAreaContent+"2");
    console.log(that.data.historynews);
    var length = that.data.historynews.length
    that.setData({
