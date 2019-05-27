@@ -26,8 +26,8 @@ Page({
         console.log(res);
       }
     });
-    for (let i = 0; i < that.data.history.length; i++) {
-      /*var stringTime = that.data.history[i].date;*/
+   /* for (let i = 0; i < that.data.history.length; i++) {
+      var stringTime = that.data.history[i].date;
       var stringTime = "2019-07-10 10:21"
       var timestamp2 = Date.parse(new Date(stringTime));
       var newDate = new Date();
@@ -41,7 +41,7 @@ Page({
         [myday]: newDate.getDate()
       });
       console.log(that.data.history[i].year + "年" + that.data.history[i].month + "月" + that.data.history[i].day + "日");
-    }
+    }*/
     /*below is today*/
     var timestamp = Date.parse(new Date());
     var date = new Date(timestamp);
