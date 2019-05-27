@@ -2,7 +2,9 @@
 <block>
 <view class="view1">
     <button></button>
-    <button bindtap='toPageInfo' class="circle"></button>
+    <button bindtap='toPageInfo' class="circle">
+        <image class="portrait-image" src="{{avatarUrl}}"></image>
+    </button>
 <!--    <view class="first1">-->
 <!--        <text class="text1" space="ensp">我们在一起 </text>-->
 <!--        <text class="date-text1" >{{togetherdate}}</text>-->
