@@ -13,6 +13,15 @@ Page({
     textheight: "",
     needwriting: false,
     chooseSize: false,
+    letterid:"",
+  },
+
+  onLoad:function(options){
+    let that = this;
+    let gbd = getApp().globalData;
+    that.setData({
+      letterid: parseInt(options.id)
+    })
   },
 
   getInputmyheader: function (e) {
@@ -53,8 +62,8 @@ Page({
         confirmText: "确定",
         success: function (res) {
           wx.request({
-            method: "PUT",
-            url: gbd.host + "/pair/letters",
+            method: "Post",
+            url: gbd.host + "/pair/letters/reply/"+that.data.letterid,
             header: gbd.cookieHeader,
             data: {
               time: TIME,
@@ -63,8 +72,18 @@ Page({
               read: false,
               title: that.data.header,
               text: that.data.content
+            },
+            success:function(e){
+              wx.showToast({
+                title: '发送成功',
+                icon: 'success',
+                duration: 1000
+              })
             }
           });
+          wx.redirectTo({
+            url: '../words/index',
+          })
         }
       })
     }

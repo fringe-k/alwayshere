@@ -1,4 +1,5 @@
 // pages/words/index.js
+var util = require("../../utils/util.js")
 Page({
 
   /**
@@ -7,22 +8,73 @@ Page({
   data: {
     recvmessages: [
     ],
-    sendmessagaes:[],
+    sendmessages:[
+    ],
     currentTab: 0
   },
 
+ 
   onLoad:function(){
     let that = this;
     let gbd = getApp().globalData;
     wx.request({
       method: "Get",
-      url: gbd.host + "/pair/letters/recv",
+      url: gbd.host+ "/pair/letters/recv",
       header: gbd.cookieHeader,
       success:function(res){
-    console.log(res);
+         for(let i=0;i<res.data.length;i++)
+         {
+           var l={
+             id:res.data[i].id,
+             header:res.data[i].title,
+             date:res.data[i].time,
+             dayDuration:res.data[i].dayDuration,
+             notreadflag:!res.data[i].read,
+             readable:false,
+             needreply: res.data[i].needReply
+           };
+           if(!l.needreply&&l.dayDuration==0)
+           {
+             l.readable=true;
+           }
+           that.data.recvmessages.push(l);
+           that.setData({
+             recvmessages: that.data.recvmessages
+           })
+         }
+        that.data.recvmessages = util.dateSort(that.data.recvmessages);
+        that.setData({
+          recvmessages: that.data.recvmessages
+        })
+        console.log(that.data.recvmessages)
       }
+    });
+    wx.request({
+      method: "Get",
+      url: gbd.host + "/pair/letters/send",
+      header: gbd.cookieHeader,
+      success: function (res) {
+        for (let i = 0; i < res.data.length; i++) {
+          var l = {
+            id: res.data[i].id,
+            header: res.data[i].title,
+            date: res.data[i].time,
+            dayDuration: res.data[i].dayDuration,
+            readflag: true
+          };
+          that.data.sendmessages.push(l);
+        }
+        that.data.sendmessages=util.dateSort(that.data.sendmessages);
+          that.setData({
+            sendmessages: that.data.sendmessages
+          })
+        }
+     
     })
- },
+  
+    
+  },
+
   tabClick: function (e) {
     var that = this;
     if (that.data.currentTab == e.currentTarget.id) {
@@ -49,34 +101,44 @@ Page({
     })
   },
   /*read*/
-  read: function () {
+  read: function (e) {
+    console.log(e)
     wx.navigateTo({
-      url: '../letters/index',
+      url: '../letters/index?id='+e.currentTarget.id,
     })
   },
   /*write to read*/
-  write: function () {
-    wx.showModal({
-      title: '提示',
-      content: '请写一封信以交换本信',
-      showCancel: true,
-      cancelText: "取消",
-      cancelColor: 'black',
-      confirmText: "写信",
-      confirmColor: 'green',
-      success: function (res) {
-        if (res.cancel) {
-          //点击取消,默认隐藏弹框
-        } else {
-          //点击确定
-          wx.navigateTo({
-            url: '../writetoopen/writetoopen',
-          })
-        }
-      },
-      fail: function (res) { },
-      complete: function (res) { },
-    })
-  }
+  write: function (e) {
+    if(e.currentTarget.dataset.needreply) {
+      wx.showModal({
+        title: '提示',
+        content: '请写一封信以交换本信',
+        showCancel: true,
+        cancelText: "取消",
+        cancelColor: 'black',
+        confirmText: "写信",
+        confirmColor: 'green',
+        success: function (res) {
+          if (res.cancel) {
+            //点击取消,默认隐藏弹框
+          } else {
+            //点击确定
+            wx.navigateTo({
+              url: '../writetoopen/writetoopen?id=' + e.currentTarget.id,
+            })
+          }
+        },
+
+      })
+    }
+    else{
+      wx.showToast({
+        title: '还没到那一天',
+        icon: 'loading',
+        duration: 1000
+      })
+    }
+  },
+  
 
 })

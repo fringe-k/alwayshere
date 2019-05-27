@@ -41,7 +41,7 @@ page{
    margin-left:5%;
    margin-right:5%;
    word-wrap:break-word;
-   line-height:1.5cm;
+  
    font-size:40rpx;
    height:1000rpx;
 }
@@ -60,8 +60,10 @@ page{
 .header{
   margin-left:5%;
   text-align: center;
+  line-height:1.5cm;
   }
 .content{
+  line-height:1cm;
   margin-left:5%;
   height:800rpx;
 }

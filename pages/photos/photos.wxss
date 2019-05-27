@@ -77,3 +77,61 @@ page{
   white-space: nowrap;
   text-align: center;
 }
+.choose-image{
+  width:60%;
+  height:30%;
+  position:fixed;
+  top:40%;
+  left:20%;
+  background-color:rgba(255,255,255,0.7);
+  z-index:1200;
+  display:flex;
+  flex-direction:column;
+}
+.icon{
+  margin-top:1%;
+  margin-left:5%;
+}
+.album-icon{
+  margin-left:4%;
+  width:30px;
+  height:30px;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACpklEQVR4Xu2ZgTEEMRSG/6uADugAFaAEFaACVIAKUAEqoANUgA7ogAqYfy4xmcxmN+/drsslLzPGzd3LXv7v/e8luzdD42PWuH4YAHNA4wSsBBo3gDVBKwErgcYJWAk0bgDbBawErATkBI4A3Mqn/cuMYwB3km/SlMCP5AuWECvSJAp2YgzAErIq+UpRUkXBCQfcAzgF8CVZ5Qix6wCuARxG1xJpEgUnAGiuMYL+v0vEJSlajyjYAMwJLER8zNSPkZCpHLAN4ArAnlvkM4AzAG8tAKD414TQnQkgLOTIKRzAbO86ANwhOHyn5mf7I7ugOAB+QRTPYzMHj6ceggZ6H7NqALB0HgBsuv2dPSNnFAeAjW4ryDxfeie8BI0xFEfR7Bs83PhB1/DmZmgUB0DaBCn6CQDnxSMHQnEAKIJiuHjvhHd3XGYTjAdvrb1DurI9BKFIAEO29Z/nPlvog7CyALpKxTvlEcBaRDEFYSUBsO7Z9Nj8/Ph2DZJNlHBYLjkQigTAI/A5gA8Al+5/mFA2PX9M9u8fAGDm/ciFUByArrq+AHDjnhnwHv4ksjchMSYeORCKAtDX1PjAhHXMhyfhSJ0Ncp1QDIDcjh6K/3T1PvQ0qc8J8RYqOmqLgt3Ku4inxFPgRmJPDJtezraZghDPFWkSBScA8Lja9TsB32dTo+X5F3d08TP8nt0hhCDSJApOAOjKXiyO2x2bnL8jZEOMe0GOCxgz5ASRJlFwJoC+zPp9n9vjIqMPgkiTKDgDgMbWWhCpmy6RJlFwBgCtmDHniTSJgg3AnEDzvw1yz+dxNt7WxrSx5lo8V3Bnmfzncc3iip2j6QHFitEszABoqNU0xxxQUzY1WswBGmo1zTEH1JRNjRZzgIZaTXPMATVlU6PFHKChVtOcX5RVjEFLrF/uAAAAAElFTkSuQmCC");
+  background-size: cover;
+}
+.camera-icon{
+  margin-left:6%;
+  width:22px;
+  height:22px;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAADyUlEQVR4Xu2a/XXVMAzFbyegTADdACYAJgAmACYoTABMAEwATABMQJkAOkFhAmACOL93kh7HtfOcWHKbJv73+SnStT6uZB9o5etg5fZrA2DzgJUj4B0CtyXdqsT4r6QflTKyf/cC4Imkt5IODRV/JemdpD+GMs2TIAa/l/TIUslAFsY/sPQIaw/45Gh8jwMgHFl5giUA9yV9dTr5WCyh8NziW5YAfJb00EKpAhl4wc2CfXu3WAFAtj/b+zXbDc8kfagVaQUAGf+4VpmJ//9ikW9KAbgj6caIgri/ZckrxYJqkyuLRfwhBwDGcKJPJeHeS14/u1BJcogUAGRzytllnKgn0HjKY0kn4UdiAFqWMk9jx2RDpM5BCAHA1b9fw5OPwcAT7koiNAZUmJICh1/D+tjltwEAv1dw+iGd3hGpPgTWEPuxZ+9ywQZAB0tLD4DBMeAYlCNJ6ADhatVPNPUAWBndG4xx30AD/gHDg16Psc/aZN0MgNedMfsMjw0CCEB7WWtp5v/uAPSnXtuxQcc9vMEdgAHjSpxCODD91ROTzGl55ChXAHK9Om6NSxPjcZMFMyNHEDKpcMETmDdaLTcAvnUZPVYUA94UkC2Mf5EZdlA57hkh4AYAA8sdzw4WyQzjpyxAIPbDRZmkX7FYLgCcc+xAQ9yd9nrOon0lLMJlNXt0ASAV+3jD3Nsh/otHhcsqF7gAQIMRJjALZWNQSaQ0brXLHIDTjsqGilm02KmwqvGqXj9zAFLZ3yJre8ltAsC/Wj/t/h+P7iyAbQKAhaumQutKAkCLy6wtXBaKpkKAW6jacb25B2B4XAXmEKA4amJCdGWrAIrHJYtTwjPm9vV0lMiwLq3o6uIBqZLFy465PT2NEf+3Lq1uACA41QvMyQWp2Le8hXbxAADAWISHi7iFFJXO+5gbwiLjtpgHGMwGLJYbAKlc0CuMUbh0rjdgMMLvqSmSBa0OgXMFgA9REnPP22hr44dUdHm5/YubCAEA7ktViNvZqe5bOkiZKtfdA3qF5r7v698oxFVgqqG5/c0AQAEoMYZQJksWl7Tsr2V7Y99qCkCoCCFBpYjjnbxArHs9sozBuDQASjygxZ4NgO12OLge78vW3KalhctafoMma/cILJy0WMzvLJX0lJV8IlPbunoqbCmb06fiXHgkxUdqLjEslfSUNbhsST2UBATC4brlA04eWj2g5mNPZbmXg5jMvdXxPMUpsukwIV6M5y7cOpc8liY3eFLSKcZM3Uucxxe1AxklAEz96KL2bwAs6rgclN08wAHURYn8D4hg40HWvvfcAAAAAElFTkSuQmCC");
+  background-size: cover;
+}
+.video-icon{
+  width:28px;
+  height:28px;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACN0lEQVR4Xu2a/zEFMRDHv68CdKADSqADKkAFqAAV0AEqQAW8ClABOqAC5juTm7nJvNwlm7uXlWz+MuMl2f3ku5sfews03haN+w8DYAponICFQOMCsCRoIWAh0DgBC4HGBWC7QGoIbAI4ArAHgH/P0T4BvAC4n2Nwf8wUAKcALmd03LeNIA4BvAlAcHEeAOwCOAdwFxojFsAtgGOBIVN0ORlyYMUEdP7ZOc9/fwPYygFwBuB6Ck+EY9CB/Ugl+M53UwYXekwB2wA+hIZP2Y05gRCGWsh59hEDuAHA2NfQCIAgVrUh57MAvPZiqTSEK5eEfTvGnM8C8Fva6978TwAOPHtinK8GwNKdPzoGsc5XCSDF+eoA8HDDfT7lJCreBTTlAIYAzySpzlejAB6NueopK599ENKkgJwNqYoQMAAZBEwBIXhjlyHLARmy09TVQsBCIEDAcsBIoFoSVJTJ3p0tOwKbqkiCvAzxQYTPYqkQqgHQFWRSIVQFgBHAG2EKhOoApEKoAkDoUTRGCWIArMulJhxBko7qMvQsPgZBDOA/FUaGIIgBaCmN+U/ioepQCIIYACdiSfwiSqTz/OjH1QNiyuSh3SELAN1ifZ0fRpRokvJ4XwkEGHxIHbsM9R3mkzTVsLEmCl/u5Bez8r5JdPjR1TVpd/YHEt0EHJgfSqzjE5mg0VMuQIoCppxXzVgGQM1SFDLEFFAIvJppTQFqlqKQIaaAQuDVTGsKULMUhQwxBRQCr2ba5hXwBwqjXkFsy5U1AAAAAElFTkSuQmCC");
+  background-size: cover;
+}
+.item-line{
+  width:100%;
+  height:20%;
+  margin-top:5%;
+  display:flex;
+  flex-direction:row;
+  align-items: center;
+}
+.option-text{
+  margin-left: 5%;
+  width: 240rpx;
+}
+.maskLayer {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(255,255,255,0.57);
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}

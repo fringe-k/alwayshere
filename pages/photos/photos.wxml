@@ -1,31 +1,30 @@
-<view class="background">  
-</view>
+<view class="background"/>
  <view  wx:if="{{isload}}" class="historynews" >
     <text class="text-show">{{today}}</text> 
     <view class="divideline2"/>  
     <view class="photoarea">
         <view class="my" bindtap='toDetail'>
-            <image src="../../images/1.jpg" class="photo"/>
+            <image src="{{addImg}}" class="photo"/>
             <text class="text">55</text>
         </view>
         <view class="and"/>
         <view class="ta">
-           <image src="../../images/1.jpg" class="photo"/>
+           <image src="{{addImg}}" class="photo"/>
             <text class="text">55</text>
         </view>
     </view>
 </view>
- <view  wx:else class="history-news">
+<view  wx:else class="history-news">
     <text class="text-show">{{today}}</text> 
     <view class="divideline2"/>  
     <view class="photo-area">
         <view class="my" bindtap='toPhotoUp'>
-            <image src="../../images/1.jpg" class="photo"/>
+            <image src="{{addImg}}" class="photo"/>
             <text class="text">{{item.word1}}</text>
         </view>
         <view class="and"/>
         <view class="ta">
-           <image src="../../images/1.jpg" class="photo"/>
+           <image src="{{addImg}}" class="photo"/>
             <text class="text">{{item.word2}}</text>
         </view>
     </view>
@@ -43,5 +42,20 @@
            <image src="../../images/1.jpg" class="photo"/>
            <text class="text">{{item.word2}}</text>
         </view>
+    </view>
+</view>
+<view class='maskLayer' wx:if="{{chooseSize}}" bindtap='hideModal'></view>
+<view class="choose-image" wx:if="{{tapToChoose}}">
+    <view bindtap="album" class="item-line">
+        <view class="icon album-icon"></view>
+        <text class="option-text">相册</text>
+    </view>
+    <view bindtap="camera" class="item-line">
+        <view class="icon camera-icon"></view>
+        <text class="option-text" style="margin-left:7%;">拍照</text>
+    </view>
+    <view bindtap="video" class="item-line">
+        <view class="icon video-icon"></view>
+        <text class="option-text">短视频</text>
     </view>
 </view>

@@ -44,7 +44,6 @@ Page({
     })
   },
   chooseSize: function (e) {
-    console.log(1);
     // 用that取代this，防止不必要的情况发生
     var that = this;
     // 创建一个动画实例
@@ -161,18 +160,10 @@ daysPickerChange:function(e){
     }
    else {
       var TIME = util.formatTime(new Date());
-      /*var message = {
-        time: TIME,
-        dayDuration: that.data.dayDuration,
-        needReply: that.data.needwriting,
-        read: false,
-        title: that.data.header,
-        text: that.data.content
-      };
-      console.log(message);*/
+      console.log(TIME);
       wx.request({
-        method: "PUT",
-        url: gbd.host + "/pair/letters",
+        method: "Post",
+        url: gbd.host + "/pair/letters/new",
         header: gbd.cookieHeader,
         data: {
           time: TIME,
@@ -181,8 +172,16 @@ daysPickerChange:function(e){
           read: false,
           title: that.data.header,
           text: that.data.content
+        },
+        success:function(res){
+          wx.showToast({
+            title: '发送成功',
+            icon: 'success',
+            duration: 1000
+          })
         }
       });
+
       var animation = wx.createAnimation({
         duration: 1000,
         timingFunction: 'linear'
@@ -194,6 +193,9 @@ daysPickerChange:function(e){
         chooseSize: false
       })
     }
+    wx.redirectTo({
+      url: '../words/index',
+    })
   },
 
 })

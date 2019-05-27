@@ -5,39 +5,28 @@ Page({
   data: {
     contentcontent: "请输入文字",
     contentCount: 0,
-    src: ""
+    src: "",
+    content:""
 
+  },
+
+  onLoad:function(e){
+    let that=this;
+    that.setData({
+      src:e.src
+    })
   },
 
   ContentInput: function (e) {
     var that = this
     var value = e.detail.value;
     that.setData({
-      contentCount: value.length
+      contentCount: value.length,
+      content:value
     })
   },
-  chooseImage: function (e) {
-    var that = this;
-    wx.chooseImage({
-      count: 1, // 最多可以选择的图片张数，默认9
-      sizeType: ['original', 'compressed'], // original 原图，compressed 压缩图，默认二者都有
-      sourceType: ['album', 'camera'], // album 从相册选图，camera 使用相机，默认二者都有
-      success: function (res) {
-        // success
-        console.log(res);
-        that.setData({
-          src: res.tempFilePaths
-        });
-      },
-      fail: function () {
-        // fail
-      },
-      complete: function () {
-        // complete
-      }
-    })
-  },
-  removeImage: function (e) {
+
+  removeImage: function (e) { 
     var that = this;
     that.setData({
       src: ""
@@ -45,19 +34,39 @@ Page({
   },
   handleImagePreview: function (e) {
     var that = this;
-    console.log(that.data.src);
     var imgs = [that.data.src];
     console.log(imgs);
     if (that.src != "") {
       wx.previewImage({
         current: that.data.src, //当前预览的图片
-        urls: imgs[0]
+        urls: imgs
       })
     }
     else return;
-  }
-
-
+  },
+  send:function(e){
+    let that = this;
+    let gbd = getApp().globalData;
+    var TIME = util.formatTime(new Date());
+    wx.showModal({
+      title: '提示',
+      content: '确认发送?',
+      cancelText: "取消",
+      confirmText: "确定",
+      success: function (res) {
+        wx.uploadFile({
+          url: gbd.host + "/pair/record",
+          filePath: that.data.src,
+          name: 'file',
+          formData:{
+            date: TIME,
+            recType: ".jpg",
+            attachText: that.data.content
+          },
+            });
+          }
+        })
+       }
 
 
 

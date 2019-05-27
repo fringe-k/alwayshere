@@ -7,13 +7,15 @@
 <swiper current="{{currentTab}}" class="swiper-box" bindchange="bindChange" duration="300">
     <swiper-item class="swiper-item">       
         <scroll-view scroll-y="true" class="scroll">
-           <view wx:for="{{messages}}" wx:key="poperty">
-             <view wx:if="{{item.readflag}}"  class="btn-open" bindtap="read">
+           <view wx:for="{{recvmessages}}" wx:key="poperty" >
+             <view wx:if="{{item.readable}}"  class="btn-open" bindtap="read" id="{{item.id}}">
+               <view wx:if="{{item.notreadflag}}" class="notyet">未 读</view>              
                <view class="header">{{item.header}}</view>
                <view class="date-show">{{item.date}}</view>
              </view>
-             <view wx:else  class="btn-shut" bindtap="write">
+             <view wx:else  class="btn-shut" bindtap="write" id="{{item.id}}" data-needreply="{{item.needreply}}">
                <view class="header">{{item.header}}</view>
+               <view class="date-show">还有{{item.dayDuration}}天开启</view>
                <view class="date-show">{{item.date}}</view>
              </view>
            </view>
@@ -22,8 +24,8 @@
     </swiper-item>
     <swiper-item class="swiper-item">
       <scroll-view scroll-y="true" class="scroll2">
-        <view wx:for="{{messages}}" wx:key="poperty">
-             <view  class="btn-open" bindtap="read">
+        <view wx:for="{{sendmessages}}" wx:key="poperty" >
+             <view  class="btn-open" bindtap="read" id="{{item.id}}">
                <view class="header">{{item.header}}</view>
                <view class="date-show">{{item.date}}</view>
              </view>

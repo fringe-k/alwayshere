@@ -4,27 +4,28 @@ var util = require("../../utils/util.js")
 Page({
   data: {
     history: [
-      {
-        date: "2019-07-10 10:21",
-        img1: "",
-        word1: "你吃了吗",
-        img2: "",
-        word2: "吃了榴莲",
-      },
-      {
-        date: "2020-07-10 10:21",
-        img1: "",
-        word1: "你吃了吗",
-        img2: "",
-        word2: "吃了榴莲dsajdiasjdiasdsadasdasdasjsiad",
-      }
     ],
     today: "",
-    isload: false
-
+    addImg: null,
+    isload: false,
+    choose:false,
+    chooseSize:false,
+    tapToChoose:false,
   },
   onLoad: function () {
-    var that = this;
+    let that = this;
+    let gbd = getApp().globalData;
+    that.setData({
+      addImg: gbd.host + "/resource/image/add"
+    });
+    wx.request({
+      method: "Get",
+      url: gbd.host + "/pair/records" ,
+      header: gbd.cookieHeader,
+      success: function (res) {
+        console.log(res);
+      }
+    });
     for (let i = 0; i < that.data.history.length; i++) {
       /*var stringTime = that.data.history[i].date;*/
       var stringTime = "2019-07-10 10:21"
@@ -57,10 +58,48 @@ Page({
 
 
   },
+  chooseWays:function(e){
+     
+  },
 
   toPhotoUp: function(e){
-    wx.navigateTo({
-      url: '../photosup/up',
+    var that=this;
+    that.setData({
+      chooseSize: true,
+      tapToChoose: true
+    })
+  },
+  hideModal:function(e){
+    var that = this;
+    that.setData({
+      chooseSize: false,
+      tapToChoose: false
+    })
+  },
+  album:function(e) {
+    var that = this;
+    wx.chooseImage({
+      count: 1, // 最多可以选择的图片张数，默认9
+      sizeType: ['original', 'compressed'], // original 原图，compressed 压缩图，默认二者都有
+      sourceType: ['album'], // album 从相册选图，camera 使用相机，默认二者都有
+      success: function (res) {
+        wx.navigateTo({
+          url: '../photosup/up?src=' + res.tempFilePaths,
+        });
+      },
+    })
+  },
+  camera:function(e){
+    var that=this;
+    wx.chooseImage({
+      count: 1, 
+      sizeType: ['original', 'compressed'], 
+      sourceType: ['camera'], 
+      success: function (res) {
+        wx.navigateTo({
+          url: '../photosup/up?src=' + res.tempFilePaths,
+        });
+      }
     })
   }
 

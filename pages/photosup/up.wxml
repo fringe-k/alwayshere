@@ -7,4 +7,4 @@
       <image class="image" src="{{src}}" mode="aspectFill" bindtap="handleImagePreview"></image>    
       <view class="image-remover"  bindtap="removeImage">删除</view>
 </view>
- <button type="default" size="mini" bindtap="chooseImage" >添加图片</button>
+ <button  size="mini" bindtap="send" >保存</button>

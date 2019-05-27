@@ -59,6 +59,7 @@ page{
   color: white;
 }
 .btn-open{
+  position:relative;
   margin-top: 40rpx;
   margin-left:7.5%;
   width:85%;
@@ -92,4 +93,22 @@ page{
     border-radius: 250px; 
    font-size:0;
    background-color: rgba(236, 236, 236, 0.548);
+}
+
+.notyet{
+  color:white;
+  width:20%;
+  height:20%;
+  background-color: rgba(239,130,153,1);
+  z-index:200;
+  position:absolute;
+  left:0;
+  top:10rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size:30rpx;
+  border-top-right-radius: 20rpx;
+  border-bottom-right-radius: 20rpx;
 }
