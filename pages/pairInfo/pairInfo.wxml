@@ -36,5 +36,5 @@
         <view class='arrow'></view>
     </view>   
      <view class="separator"></view>
-   
 </block>
+<view class="bye" bindtap="bye">解除绑定</view>

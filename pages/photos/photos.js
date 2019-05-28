@@ -30,66 +30,65 @@ Page({
       url: gbd.host + "/pair/records",
       header: gbd.cookieHeader,
       success: function (res) {
-        console.log(res.data);
         var TIME = util.formatTime(new Date());
         res.data = util.dateSort(res.data)
         console.log(res.data);
-        /*let j = 0;
+        let j = 0;
         if (res.data[0].weUserId == that.data.userId || res.data[1].weUserId == that.data.userId) {
           that.setData({
             hasNotLoad: false
           })
           for (let i = 0; i < res.data.length; i++) {
-            if (i = 0) {
+            if (i ==0) {
               if (res.data[i].weUserId == that.data.userId) {
-                l = {
-                  data: res.data[i].date,
-                  img1: res.data[i].recSrc,
+                var l = {
+                  date: res.data[i].date,
+                  img1: gbd.host + "/uploaded?path=" + res.data[i].recSrc,
                   text1: res.data[i].attachText,
                   img2: that.data.addImg,
                   text2: ""
                 };
-                history.push(l)
+               that.data. history.push(l)
               } else {
-                l = {
-                  data: res.data[i].date,
-                  img2: res.data[i].recSrc,
+                var l = {
+                  date: res.data[i].date,
+                  img2: gbd.host + "/uploaded?path=" +  res.data[i].recSrc ,
                   text2: res.data[i].attachText,
                   img1: that.data.addImg,
                   text1: ""
                 };
-                history.push(l)
+                that.data. history.push(l)
               }
             } else {
               if (res.data[i].date == res.data[i - 1].date) {
                 if (res.data[i].weUserId == that.data.userId) {
-                  history[j].img1 = res.data[i].recSrc;
-                  history[j].text1 = res.data[i].attachText;
+                  that.data.history[j].img1 = gbd.host + "/uploaded?path=" +  res.data[i].recSrc;
+                  that.data. history[j].text1 = res.data[i].attachText;
                 } else {
-                  history[j].img2 = res.data[i].recSrc;
-                  history[j].text2 = res.data[i].attachText;
+                  that.data.history[j].img2 = gbd.host + "/uploaded?path=" + res.data[i].recSrc ;
+                  that.data.history[j].text2 = res.data[i].attachText;
                 }
                 j = j + 1;
               } else {
                 j = j + 1;
                 if (res.data[i].weUserId == that.data.userId) {
-                  l = {
-                    data: res.data[i].date,
-                    img1: res.data[i].recSrc,
+                  var l = {
+                    date: res.data[i].date,
+                    img1: gbd.host + "/uploaded?path="+ +res.data[i].recSrc,
                     text1: res.data[i].attachText,
                     img2: that.data.addImg,
                     text2: ""
                   };
-                  history.push(l)
+                  that.data.history.push(l)
                 } else {
-                  l = {
-                    data: res.data[i].date,
-                    img2: res.data[i].recSrc,
+                 var l = {
+                    date: res.data[i].date,
+                   img2: gbd.host + "/uploaded?path=" + res.data[i].recSrc ,
                     text2: res.data[i].attachText,
                     img1: that.data.addImg,
                     text1: ""
                   };
-                  history.push(l)
+                  that.data.history.push(l)
                 }
               }
             }
@@ -98,8 +97,8 @@ Page({
             history: that.data.history
           })
         }
-        else {
-          if (res.data[0].pairId == that.data.otherId) {
+      /*  else {
+          if (res.data[0].weUserId== that.data.otherId) {
             that.setData({
               img2: res.data[0].recType,
               text2: res.data[0].attachText
@@ -113,54 +112,54 @@ Page({
             for (let i = 0; i < res.data.length; i++) {
               if (i = 0) {
                 if (res.data[i].weUserId == that.data.userId) {
-                  l = {
-                    data: res.data[i].date,
+                  var l = {
+                    date: res.data[i].date,
                     img1: res.data[i].recSrc,
                     text1: res.data[i].attachText,
                     img2: that.data.addImg,
                     text2: ""
                   };
-                  history.push(l)
+                  that.datahistory.push(l)
                 } else {
-                  l = {
-                    data: res.data[i].date,
+                  var l = {
+                    date: res.data[i].date,
                     img2: res.data[i].recSrc,
                     text2: res.data[i].attachText,
                     img1: that.data.addImg,
                     text1: ""
                   };
-                  history.push(l)
+                  that.datahistory.push(l)
                 }
               } else {
                 if (res.data[i].date == res.data[i - 1].date) {
                   if (res.data[i].weUserId == that.data.userId) {
-                    history[j].img1 = res.data[i].recSrc;
-                    history[j].text1 = res.data[i].attachText;
+                    that.datahistory[j].img1 = res.data[i].recSrc;
+                    that.datahistory[j].text1 = res.data[i].attachText;
                   } else {
-                    history[j].img2 = res.data[i].recSrc;
-                    history[j].text2 = res.data[i].attachText;
+                    that.datahistory[j].img2 = res.data[i].recSrc;
+                    that.datahistory[j].text2 = res.data[i].attachText;
                   }
                   j = j + 1;
                 } else {
                   j = j + 1;
                   if (res.data[i].weUserId == that.data.userId) {
-                    l = {
-                      data: res.data[i].date,
+                   var l = {
+                      date: res.data[i].date,
                       img1: res.data[i].recSrc,
                       text1: res.data[i].attachText,
                       img2: that.data.addImg,
                       text2: ""
                     };
-                    history.push(l)
+                    that.datahistory.push(l)
                   } else {
-                    l = {
-                      data: res.data[i].date,
+                   var l = {
+                      date: res.data[i].date,
                       img2: res.data[i].recSrc,
                       text2: res.data[i].attachText,
                       img1: that.data.addImg,
                       text1: ""
                     };
-                    history.push(l)
+                    that.datahistory.push(l)
                   }
                 }
               }

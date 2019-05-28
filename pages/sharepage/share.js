@@ -87,6 +87,11 @@ Page({
               leftWeUserId: gbd.userInfo.id,
               rightWeUserId: gbd.theOtherid
             },
+            success:function(e){
+              wx.redirectTo({
+                url: '../loading/loading',
+              })
+            }
           })
         }
       }

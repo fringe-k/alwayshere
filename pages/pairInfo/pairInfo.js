@@ -46,7 +46,24 @@ Page({
             path: "/pages/sharepage/share?url=''&id=" + that.data.userInfo.id
         }
     },
- 
-
-
+    bye:function(e){
+      let that = this;
+      let gbd = getApp().globalData;
+      wx.showModal({
+        title: '',
+        content: '非得这样吗?',
+        cancelText: "取消",
+        confirmText: "确定",
+        success: function (res) {
+          if (res.cancel) {}
+          else{
+            wx.request({
+              method: "Post",
+              url: gbd.host + "/pair/dissolve",
+              header: gbd.cookieHeader,
+            })
+          }
+    }
+})
+}
 })

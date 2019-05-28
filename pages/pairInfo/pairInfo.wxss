@@ -84,3 +84,10 @@
   margin-left:10%;
   background:rgb(222, 223, 219);
 }
+.bye{
+  position:fixed;
+  bottom:10rpx;
+  left:40%;
+  color:skyblue;
+  font-size:30rpx;
+}
