@@ -1,0 +1,10 @@
+<!--pages/useOfTashuo/Ta.wxml-->
+<view class="show">
+<text style="white-space:pre-line;line-height:1cm;">
+点击绑定后的个人信息界面
+同时点击两个人的头像
+将头像同时向两边拉动即可解绑
+
+希望你们一辈子不会用到这个功能
+</text>
+</view>

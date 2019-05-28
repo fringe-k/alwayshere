@@ -1,0 +1,10 @@
+<!--pages/useOfTashuo/Ta.wxml-->
+<view class="show">
+<text style="white-space:pre-line;line-height:1cm;">
+<text style="font-weight:700;">主界面</text>包含动态上传日期，双方上传的图片/小视频及文字内容。
+<text style="font-weight:700;">上传界面</text>点击“照相机”按钮即可进入上传界面选择选择上传图片或视频的方式。
+<text style="font-weight:700;">输入界面</text>选择图片或小视频后，会进入文字输入界面输入完成后点击“完成”，则会有相应提示。
+                      
+
+</text>
+</view>

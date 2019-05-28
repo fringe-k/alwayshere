@@ -1,0 +1,8 @@
+<!--pages/detail/detail.wxml-->
+ <view  class="circle">
+    <image class="portrait-image" src="{{avatarUrl}}"></image>
+</view>
+<view class="detail">
+    <image class="portrait-image2" src="{{avatarUrl}}"></image>
+    <text class="text">{{text}}</text>
+</view>

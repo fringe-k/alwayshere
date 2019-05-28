@@ -1,0 +1,9 @@
+<!--pages/useOfTashuo/Ta.wxml-->
+<view class="show">
+<text style="white-space:pre-line;line-height:1cm;">
+点击个人中心用户头像(左侧头像)旁边的加号按钮
+分享小程序链接给你的情侣
+对方点击确认按钮后，即可成为情侣
+双方填写基本信息后即可使用
+</text>
+</view>
