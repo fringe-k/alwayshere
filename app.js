@@ -1,10 +1,11 @@
 //app.js
 import Request from "./utils/request.js";
 
+// host: "https://gravity.xmu.edu.cn",
 App({
     globalData: {
         cookieHeader: null,
-        host: "https://gravity.xmu.edu.cn",
+        host: "https://localhost",
 
         hasLogin: false,
         userInfo: null,

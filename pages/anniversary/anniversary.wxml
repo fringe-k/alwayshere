@@ -19,7 +19,7 @@
         <label class="title">纪念日</label>
         <picker mode="date" bindchange="memDayPickerChange" class="input">
             <view>
-                <text>{{(memorialDayInfo === null || memorialDayInfo.memorialDay === null)? '空' : memorialDayInfo.memorialDay}}</text>
+                <text>{{(memorialDayInfo.memorialDay === null | memorialDayInfo.memorialDay === undefined)? '空' : memorialDayInfo.memorialDay}}</text>
             </view>
         </picker>
         <view class='arrow'></view>
@@ -29,7 +29,7 @@
         <label class="title">下次见面</label>
         <picker mode="date" bindchange="meetDayPickerChange" class="input">
             <view>
-                <text>{{(memorialDayInfo === null || memorialDayInfo.nextMeetDay === null)? '空' :memorialDayInfo.nextMeetDay}}</text>
+                <text>{{(memorialDayInfo.nextMeetDay === null | memorialDayInfo.nextMeetDay === undefined)? '空' :memorialDayInfo.nextMeetDay}}</text>
             </view>
         </picker>
         <view class='arrow'></view>

@@ -107,6 +107,7 @@ class Request {
                 header: data.cookieHeader,
                 success(res) {
                     if (res.statusCode === 200) {
+                        data.memorialDayInfo = res.data;
                         resolve(res.data);
                     }
                 }
@@ -167,7 +168,6 @@ class Request {
                 header: data.cookieHeader,
                 data: info,
                 success(res) {
-                    data.memorialDayInfo = res.data;
                     resolve(res.data);
                 }
             });

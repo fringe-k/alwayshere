@@ -45,6 +45,7 @@ Page({
             .then(req.getPair)
             .then(req.getWxUserInfo)
             .then(req.updateUserAvatar)
+            .then(req.getMemorialDayInfo)
             .then(this.onDataReadyPromise)
             .catch(r=>{
                 if(r.code === 0){

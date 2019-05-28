@@ -25,9 +25,10 @@ Page({
             this.setData({
                 memorialDayInfo: newMemorialDayInfo
             });
+            getApp().globalData.memorialDayInfo = newMemorialDayInfo;
             new Request(getApp().globalData)
                 .updateMemorialDay({
-                    attr: value
+                    [attr]: value
                 });
         }
     },
@@ -38,5 +39,10 @@ Page({
             theOtherUserInfo: gbd.theOtherUserInfo,
             memorialDayInfo: gbd.memorialDayInfo
         });
+        if(this.data.memorialDayInfo == null){
+            this.setData({
+                memorialDayInfo: {}
+            })
+        }
     }
 });
