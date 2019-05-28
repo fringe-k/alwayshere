@@ -1,2 +1,21 @@
 <!--pages/helpsandrecalls/help.wxml-->
-<text>pages/helpsandrecalls/help.wxml</text>
+<view class="item-line" bindtap="toUseOfTa">
+    <text style="margin-left:5%;">他说用法</text>
+    <text style="margin-left:40%;color:gray;">详细信息</text>
+    <view class='arrow'></view>
+</view>
+<view class="item-line" bindtap="toUseOfYu">
+    <text style="margin-left:5%;">与你用法</text>
+    <text style="margin-left:40%;color:gray;">详细信息</text>
+    <view class='arrow'></view>
+</view>
+<view class="item-line" bindtap="toUseOfUs">
+    <text style="margin-left:5%;">如何绑定</text>
+    <text style="margin-left:40%;color:gray;">详细信息</text>
+    <view class='arrow'></view>
+</view>
+<view class="item-line" bindtap="toUseOfBye">
+    <text style="margin-left:5%;">如何解绑</text>
+    <text style="margin-left:40%;color:gray;">详细信息</text>
+    <view class='arrow'></view>
+</view>

@@ -66,8 +66,8 @@
 				{
 					"id": 3,
 					"name": "basicInfo",
-					"pathName": "pages/letters/index",
-					"query": "",
+					"pathName": "pages/sharepage/share",
+					"query": "id=\"0\"&img=\"123\"&text=\"555fgfgsgsddsfdsfdsfdsfdsfsdfsdfsdfdsfsdfsdf\"",
 					"scene": null
 				},
 				{

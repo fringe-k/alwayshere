@@ -64,6 +64,9 @@ Page({
             attachText: that.data.content
           },
             });
+            wx.redirectTo({
+              url: '../photos/photos',
+            })
           }
         })
        }

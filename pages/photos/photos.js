@@ -7,28 +7,173 @@ Page({
     ],
     today: "",
     addImg: null,
-    isload: false,
+    hasNotLoad: true,
     choose:false,
     chooseSize:false,
     tapToChoose:false,
+    userId:-1,
+    otherId:-1,
+    img2:"",
+    text2:"",
+    today:""
   },
   onLoad: function () {
     let that = this;
     let gbd = getApp().globalData;
     that.setData({
-      addImg: gbd.host + "/resource/image/add"
+      addImg: gbd.host + "/resource/image/add",
+      userId:gbd.userInfo.id,
+      otherId: gbd.theOtherUserInfo.id
     });
     wx.request({
       method: "Get",
-      url: gbd.host + "/pair/records" ,
+      url: gbd.host + "/pair/records",
       header: gbd.cookieHeader,
       success: function (res) {
-        console.log(res);
-      }
-    });
-   /* for (let i = 0; i < that.data.history.length; i++) {
+        var TIME = util.formatTime(new Date());
+        res.data = util.dateSort(res.data)
+        let j = 0;
+        if (res.data[0].weUserId == that.data.userId || res.data[1].weUserId == that.data.userId) {
+          that.setData({
+            hasNotLoad:false
+          })
+          for (let i = 0; i < res.data.length; i++) {
+            if (i = 0) {
+              if (res.data[i].weUserId == that.data.userId) {
+                l = {
+                  data: res.data[i].date,
+                  img1: res.data[i].recSrc,
+                  text1: res.data[i].attachText,
+                  img2: that.data.addImg,
+                  text2: ""
+                };
+                history.push(l)
+              } else {
+                l = {
+                  data: res.data[i].date,
+                  img2: res.data[i].recSrc,
+                  text2: res.data[i].attachText,
+                  img1: that.data.addImg,
+                  text1: ""
+                };
+                history.push(l)
+              }
+            } else {
+              if (res.data[i].date == res.data[i - 1].date) {
+                if (res.data[i].weUserId == that.data.userId) {
+                  history[j].img1 = res.data[i].recSrc;
+                  history[j].text1 = res.data[i].attachText;
+                } else {
+                  history[j].img2 = res.data[i].recSrc;
+                  history[j].text2 = res.data[i].attachText;
+                }
+                j = j + 1;
+              } else {
+                j = j + 1;
+                if (res.data[i].weUserId == that.data.userId) {
+                  l = {
+                    data: res.data[i].date,
+                    img1: res.data[i].recSrc,
+                    text1: res.data[i].attachText,
+                    img2: that.data.addImg,
+                    text2: ""
+                  };
+                  history.push(l)
+                } else {
+                  l = {
+                    data: res.data[i].date,
+                    img2: res.data[i].recSrc,
+                    text2: res.data[i].attachText,
+                    img1: that.data.addImg,
+                    text1: ""
+                  };
+                  history.push(l)
+                }
+              }
+            }
+          }
+          that.setData({
+            history: that.data.history
+          })
+        }
+        else {
+          if (res.data[0].pairId == that.data.otherId) {
+            that.setData({
+              img2: res.data[0].recType,
+              text2: res.data[0].attachText
+            })
+          }
+          else
+            {
+              that.setData({
+                img2: that.data.addImg,
+                text2: ""
+              })
+              for (let i = 0; i < res.data.length; i++) {
+                if (i = 0) {
+                  if (res.data[i].weUserId == that.data.userId) {
+                    l = {
+                      data: res.data[i].date,
+                      img1: res.data[i].recSrc,
+                      text1: res.data[i].attachText,
+                      img2: that.data.addImg,
+                      text2: ""
+                    };
+                    history.push(l)
+                  } else {
+                    l = {
+                      data: res.data[i].date,
+                      img2: res.data[i].recSrc,
+                      text2: res.data[i].attachText,
+                      img1: that.data.addImg,
+                      text1: ""
+                    };
+                    history.push(l)
+                  }
+                } else {
+                  if (res.data[i].date == res.data[i - 1].date) {
+                    if (res.data[i].weUserId == that.data.userId) {
+                      history[j].img1 = res.data[i].recSrc;
+                      history[j].text1 = res.data[i].attachText;
+                    } else {
+                      history[j].img2 = res.data[i].recSrc;
+                      history[j].text2 = res.data[i].attachText;
+                    }
+                    j = j + 1;
+                  } else {
+                    j = j + 1;
+                    if (res.data[i].weUserId == that.data.userId) {
+                      l = {
+                        data: res.data[i].date,
+                        img1: res.data[i].recSrc,
+                        text1: res.data[i].attachText,
+                        img2: that.data.addImg,
+                        text2: ""
+                      };
+                      history.push(l)
+                    } else {
+                      l = {
+                        data: res.data[i].date,
+                        img2: res.data[i].recSrc,
+                        text2: res.data[i].attachText,
+                        img1: that.data.addImg,
+                        text1: ""
+                      };
+                      history.push(l)
+                    }
+                  }
+                }
+              }
+              that.setData({
+                history: that.data.history
+              })
+            }
+          }
+        }
+      });
+
+   for (let i = 0; i < that.data.history.length; i++) {
       var stringTime = that.data.history[i].date;
-      var stringTime = "2019-07-10 10:21"
       var timestamp2 = Date.parse(new Date(stringTime));
       var newDate = new Date();
       newDate.setTime(timestamp2);
@@ -40,9 +185,9 @@ Page({
         [mymonth]: newDate.getMonth() + 1,
         [myday]: newDate.getDate()
       });
-      console.log(that.data.history[i].year + "年" + that.data.history[i].month + "月" + that.data.history[i].day + "日");
-    }*/
-    /*below is today*/
+
+    }
+   /*below is today*/
     var timestamp = Date.parse(new Date());
     var date = new Date(timestamp);
     //获取年份  
@@ -55,7 +200,6 @@ Page({
     that.setData({
       today: string
     })
-
 
   },
   chooseWays:function(e){
@@ -100,6 +244,11 @@ Page({
           url: '../photosup/up?src=' + res.tempFilePaths,
         });
       }
+    })
+  },
+  toDetail:function(e){
+    wx.navigateTo({
+      url: '../detail/detail?img=' + e.currentTarget.dataset.img + '&text=' + e.currentTarget.dataset.text + '&id='+ e.currentTarget.id
     })
   }
 

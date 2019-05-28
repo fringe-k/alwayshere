@@ -7,11 +7,17 @@
     "pages/writing/writing",  
     "pages/writetoopen/writetoopen", 
     "pages/photos/photos",
+    "pages/photosup/up",
     "pages/pairInfo/pairInfo",
     "pages/basicInfo/basicInfo",
     "pages/anniversary/anniversary",
-    "pages/helpsandrecalls/help",   
+    "pages/helpsandrecalls/help", 
+    "pages/useOfTashuo/Ta",  
+    "pages/useOfYuNi/Yu",
+    "pages/useOfUs/Us",
+    "pages/useOfBye/Bye",
     "pages/sharepage/share",
+    "pages/detail/detail",
     "pages/logs/logs"
   ],
   "window": {

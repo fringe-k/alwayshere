@@ -1,3 +1,6 @@
+<button bindtap='send' class="finishrec">
+          <text class="finisher">完 成</text>
+     </button>
 <view class="content" id="textwrap">
         <textarea maxlength="100" style="height:{{textheight}};"  placeholder="{{contentcontent}}"
           fixed="true"  class="textarea" bindinput="ContentInput"/>
@@ -7,4 +10,3 @@
       <image class="image" src="{{src}}" mode="aspectFill" bindtap="handleImagePreview"></image>    
       <view class="image-remover"  bindtap="removeImage">删除</view>
 </view>
- <button  size="mini" bindtap="send" >保存</button>

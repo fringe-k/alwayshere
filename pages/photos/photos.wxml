@@ -1,49 +1,34 @@
 <view class="background"/>
- <view  wx:if="{{isload}}" class="historynews" >
-    <text class="text-show">{{today}}</text> 
-    <view class="divideline2"/>  
-    <view class="photoarea">
-        <view class="my" bindtap='toDetail'>
-            <image src="{{addImg}}" class="photo"/>
-            <text class="text">55</text>
-        </view>
-        <view class="and"/>
-        <view class="ta">
-           <image src="{{addImg}}" class="photo"/>
-            <text class="text">55</text>
-        </view>
-    </view>
-</view>
-<view  wx:else class="history-news">
-    <text class="text-show">{{today}}</text> 
-    <view class="divideline2"/>  
+<view  wx:if="hasNotLoad" class="history-news">
+    <text class="text-show">{{today}}</text>
+    <view class="divideline2"/>
     <view class="photo-area">
         <view class="my" bindtap='toPhotoUp'>
             <image src="{{addImg}}" class="photo"/>
-            <text class="text">{{item.word1}}</text>
         </view>
         <view class="and"/>
-        <view class="ta">
-           <image src="{{addImg}}" class="photo"/>
-            <text class="text">{{item.word2}}</text>
+        <view class="ta" data-img="{{img2}}" data-text="{{text2}}" id="1">
+            <image src="{{img2}}" class="photo"/>
+            <text class="text">{{text2}}</text>
         </view>
     </view>
 </view>
- <view wx:for="{{history}}" wx:key="poperty" class="history-news"  >
-    <text class="text-show">{{item.year}}年{{item.month}}月{{item.day}}日</text> 
-    <view class="divideline2"/>  
-    <view class="photo-area">
-        <view class="my" bindtap='toDetail'>
-            <image src="../../images/1.jpg" class="photo"/>
-            <text class="text">{{item.word1}}</text>
-        </view>
-        <view class="and"/>
-        <view class="ta" bindtap='toDetail'>
-           <image src="../../images/1.jpg" class="photo"/>
-           <text class="text">{{item.word2}}</text>
-        </view>
-    </view>
+<view wx:for="{{history}}" wx:key="poperty" class="history-news"  >
+       <text class="text-show">{{item.year}}年{{item.month}}月{{item.day}}日</text>
+       <view class="divideline2"/>
+       <view class="photo-area">
+         <view class="my" bindtap='toDetail' data-img="{{item.img1}}" data-text="{{item.text1}}" id="0">
+            <image src="{{item.img1}}" class="photo"/>
+            <text class="text">{{item.text1}}</text>
+         </view>
+         <view class="and"/>
+         <view class="ta" bindtap='toDetail'  data-img="{{item.img2}}" data-text="{{item.text2}}" id="1">
+           <image src="{{item.img2}}" class="photo"/>
+           <text class="text">{{item.text2}}</text>
+         </view>
+       </view>
 </view>
+
 <view class='maskLayer' wx:if="{{chooseSize}}" bindtap='hideModal'></view>
 <view class="choose-image" wx:if="{{tapToChoose}}">
     <view bindtap="album" class="item-line">

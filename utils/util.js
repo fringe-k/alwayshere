@@ -50,8 +50,15 @@ var replySort = function (array) {
   return array
 };
 
+var formulaTime=function(a){
+  var ll = a.split(" ");
+  ll = ll[0]
+  a=ll
+  return a;
+}
 module.exports = {
   formatTime: formatTime,
   dateSort:dateSort,
-  replySort: replySort
+  replySort: replySort,
+  formulaTime: formulaTime
 };
