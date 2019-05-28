@@ -48,26 +48,32 @@ Page({
     let that = this;
     let gbd = getApp().globalData;
     var TIME = util.formatTime(new Date());
+    console.log(TIME);
     wx.showModal({
       title: '提示',
       content: '确认发送?',
       cancelText: "取消",
       confirmText: "确定",
       success: function (res) {
-        wx.uploadFile({
-          url: gbd.host + "/pair/record",
-          filePath: that.data.src,
-          name: 'file',
-          formData:{
-            date: TIME,
-            recType: ".jpg",
-            attachText: that.data.content
-          },
-            });
-            wx.redirectTo({
-              url: '../photos/photos',
-            })
-          }
+        if (res.cancel) {
+        }
+        else {
+          wx.uploadFile({
+            url: gbd.host + "/pair/record",
+            header: gbd.cookieHeader,
+            filePath: that.data.src,
+            name: 'file',
+            formData: {
+              date: TIME,
+              recType: ".jpg",
+              attachText: that.data.content
+            },
+          });
+          wx.redirectTo({
+            url: '../photos/photos',
+          })
+        }
+      }
         })
        }
 

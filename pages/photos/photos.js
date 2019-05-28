@@ -8,21 +8,21 @@ Page({
     today: "",
     addImg: null,
     hasNotLoad: true,
-    choose:false,
-    chooseSize:false,
-    tapToChoose:false,
-    userId:-1,
-    otherId:-1,
-    img2:"",
-    text2:"",
-    today:""
+    choose: false,
+    chooseSize: false,
+    tapToChoose: false,
+    userId: -1,
+    otherId: -1,
+    img2: "",
+    text2: "",
+    today: ""
   },
   onLoad: function () {
     let that = this;
     let gbd = getApp().globalData;
     that.setData({
       addImg: gbd.host + "/resource/image/add",
-      userId:gbd.userInfo.id,
+      userId: gbd.userInfo.id,
       otherId: gbd.theOtherUserInfo.id
     });
     wx.request({
@@ -30,12 +30,14 @@ Page({
       url: gbd.host + "/pair/records",
       header: gbd.cookieHeader,
       success: function (res) {
+        console.log(res.data);
         var TIME = util.formatTime(new Date());
         res.data = util.dateSort(res.data)
-        let j = 0;
+        console.log(res.data);
+        /*let j = 0;
         if (res.data[0].weUserId == that.data.userId || res.data[1].weUserId == that.data.userId) {
           that.setData({
-            hasNotLoad:false
+            hasNotLoad: false
           })
           for (let i = 0; i < res.data.length; i++) {
             if (i = 0) {
@@ -103,14 +105,44 @@ Page({
               text2: res.data[0].attachText
             })
           }
-          else
-            {
-              that.setData({
-                img2: that.data.addImg,
-                text2: ""
-              })
-              for (let i = 0; i < res.data.length; i++) {
-                if (i = 0) {
+          else {
+            that.setData({
+              img2: that.data.addImg,
+              text2: ""
+            })
+            for (let i = 0; i < res.data.length; i++) {
+              if (i = 0) {
+                if (res.data[i].weUserId == that.data.userId) {
+                  l = {
+                    data: res.data[i].date,
+                    img1: res.data[i].recSrc,
+                    text1: res.data[i].attachText,
+                    img2: that.data.addImg,
+                    text2: ""
+                  };
+                  history.push(l)
+                } else {
+                  l = {
+                    data: res.data[i].date,
+                    img2: res.data[i].recSrc,
+                    text2: res.data[i].attachText,
+                    img1: that.data.addImg,
+                    text1: ""
+                  };
+                  history.push(l)
+                }
+              } else {
+                if (res.data[i].date == res.data[i - 1].date) {
+                  if (res.data[i].weUserId == that.data.userId) {
+                    history[j].img1 = res.data[i].recSrc;
+                    history[j].text1 = res.data[i].attachText;
+                  } else {
+                    history[j].img2 = res.data[i].recSrc;
+                    history[j].text2 = res.data[i].attachText;
+                  }
+                  j = j + 1;
+                } else {
+                  j = j + 1;
                   if (res.data[i].weUserId == that.data.userId) {
                     l = {
                       data: res.data[i].date,
@@ -130,49 +162,18 @@ Page({
                     };
                     history.push(l)
                   }
-                } else {
-                  if (res.data[i].date == res.data[i - 1].date) {
-                    if (res.data[i].weUserId == that.data.userId) {
-                      history[j].img1 = res.data[i].recSrc;
-                      history[j].text1 = res.data[i].attachText;
-                    } else {
-                      history[j].img2 = res.data[i].recSrc;
-                      history[j].text2 = res.data[i].attachText;
-                    }
-                    j = j + 1;
-                  } else {
-                    j = j + 1;
-                    if (res.data[i].weUserId == that.data.userId) {
-                      l = {
-                        data: res.data[i].date,
-                        img1: res.data[i].recSrc,
-                        text1: res.data[i].attachText,
-                        img2: that.data.addImg,
-                        text2: ""
-                      };
-                      history.push(l)
-                    } else {
-                      l = {
-                        data: res.data[i].date,
-                        img2: res.data[i].recSrc,
-                        text2: res.data[i].attachText,
-                        img1: that.data.addImg,
-                        text1: ""
-                      };
-                      history.push(l)
-                    }
-                  }
                 }
               }
-              that.setData({
-                history: that.data.history
-              })
             }
+            that.setData({
+              history: that.data.history
+            })
           }
-        }
-      });
+        }*/
+      }
+    });
 
-   for (let i = 0; i < that.data.history.length; i++) {
+    for (let i = 0; i < that.data.history.length; i++) {
       var stringTime = that.data.history[i].date;
       var timestamp2 = Date.parse(new Date(stringTime));
       var newDate = new Date();
@@ -187,7 +188,7 @@ Page({
       });
 
     }
-   /*below is today*/
+    /*below is today*/
     var timestamp = Date.parse(new Date());
     var date = new Date(timestamp);
     //获取年份  
@@ -202,25 +203,25 @@ Page({
     })
 
   },
-  chooseWays:function(e){
-     
+  chooseWays: function (e) {
+
   },
 
-  toPhotoUp: function(e){
-    var that=this;
+  toPhotoUp: function (e) {
+    var that = this;
     that.setData({
       chooseSize: true,
       tapToChoose: true
     })
   },
-  hideModal:function(e){
+  hideModal: function (e) {
     var that = this;
     that.setData({
       chooseSize: false,
       tapToChoose: false
     })
   },
-  album:function(e) {
+  album: function (e) {
     var that = this;
     wx.chooseImage({
       count: 1, // 最多可以选择的图片张数，默认9
@@ -234,12 +235,12 @@ Page({
       },
     })
   },
-  camera:function(e){
-    var that=this;
+  camera: function (e) {
+    var that = this;
     wx.chooseImage({
-      count: 1, 
-      sizeType: ['original', 'compressed'], 
-      sourceType: ['camera'], 
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['camera'],
       success: function (res) {
         wx.navigateTo({
           url: '../photosup/up?src=' + res.tempFilePaths,
@@ -247,9 +248,9 @@ Page({
       }
     })
   },
-  toDetail:function(e){
+  toDetail: function (e) {
     wx.navigateTo({
-      url: '../detail/detail?img=' + e.currentTarget.dataset.img + '&text=' + e.currentTarget.dataset.text + '&id='+ e.currentTarget.id
+      url: '../detail/detail?img=' + e.currentTarget.dataset.img + '&text=' + e.currentTarget.dataset.text + '&id=' + e.currentTarget.id
     })
   }
 

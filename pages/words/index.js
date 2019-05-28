@@ -120,9 +120,7 @@ Page({
         confirmColor: 'green',
         success: function (res) {
           if (res.cancel) {
-            //点击取消,默认隐藏弹框
           } else {
-            //点击确定
             wx.navigateTo({
               url: '../writetoopen/writetoopen?id=' + e.currentTarget.id,
             })

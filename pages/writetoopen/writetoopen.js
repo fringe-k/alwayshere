@@ -61,26 +61,29 @@ Page({
         cancelText: "取消",
         confirmText: "确定",
         success: function (res) {
-          wx.request({
-            method: "Post",
-            url: gbd.host + "/pair/letters/reply/"+that.data.letterid,
-            header: gbd.cookieHeader,
-            data: {
-              time: TIME,
-              dayDuration: 0,
-              needReply: false,
-              read: false,
-              title: that.data.header,
-              text: that.data.content
-            },
-            success:function(e){
-              wx.showToast({
-                title: '发送成功',
-                icon: 'success',
-                duration: 1000
-              })
-            }
-          });
+          if(res.cancel){}
+          else {
+            wx.request({
+              method: "Post",
+              url: gbd.host + "/pair/letters/reply/" + that.data.letterid,
+              header: gbd.cookieHeader,
+              data: {
+                time: TIME,
+                dayDuration: 0,
+                needReply: false,
+                read: false,
+                title: that.data.header,
+                text: that.data.content
+              },
+              success: function (e) {
+                wx.showToast({
+                  title: '发送成功',
+                  icon: 'success',
+                  duration: 1000
+                })
+              }
+            });
+          }
           wx.redirectTo({
             url: '../words/index',
           })

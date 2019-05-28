@@ -77,15 +77,18 @@ Page({
       cancelText: "取消",
       confirmText: "确定",
       success:function(res){
-        wx.request({
-          method: "PUT",
-          url: gbd.host + "/pair",
-          header: gbd.cookieHeader,
-          data: {
-            leftWeUserId: gbd.userInfo.id,
-            rightWeUserId: gbd.theOtherid
-          },
-        })
+        if(res.cancel){}
+        else {
+          wx.request({
+            method: "PUT",
+            url: gbd.host + "/pair",
+            header: gbd.cookieHeader,
+            data: {
+              leftWeUserId: gbd.userInfo.id,
+              rightWeUserId: gbd.theOtherid
+            },
+          })
+        }
       }
   })
   }
