@@ -37,13 +37,15 @@ Page({
 
     onShareAppMessage: function (ops) {
         let that = this;
+        let gbd = getApp().globalData;
         if (ops.from === 'button') {
             // 来自页面内转发按钮
         }
         return {
             title: "我在",
             desc: "你好，我有一生想和你谈",
-            path: "/pages/sharepage/share?url=''&id=" + that.data.userInfo.id
+            path: "/pages/sharepage/share?url=''&id=" + that.data.userInfo.id,
+            imageUrl: gbd.host + "/resource/image/cover"  
         }
     },
     bye:function(e){
@@ -61,6 +63,9 @@ Page({
               method: "Post",
               url: gbd.host + "/pair/dissolve",
               header: gbd.cookieHeader,
+            })
+            that.setData({
+              theOtherUserInfo:null
             })
           }
     }

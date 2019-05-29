@@ -27,10 +27,11 @@
              </view>
        </scroll-view>
        <view class="content2" id="textwrap">
-         <textarea maxlength="200" style="height:{{textheight}};"  placeholder="{{contentcontent}}"
+         <textarea maxlength="200" style="height:{{textheight}};width:90%;"  placeholder="{{contentcontent}}"
           fixed="true" value="{{textAreaContent}}"  bindinput='bindWord' id="mytext" />
+       
+        <button bindtap='sendMessage' class="but">发送</button>
         </view>
-        <button bindtap='sendMessage'>发送</button>
     </swiper-item>  
 </swiper>
 

@@ -15,7 +15,7 @@ Page({
     textheight:"",
     contentcontent:"想说点什么吗",
     scrollTop:"",
-    header:"r",
+    header:"空",
     neirong:"",
     userInfo:"",
     theOtherUserInfo:"",
@@ -104,8 +104,9 @@ Page({
    query.select(id).boundingClientRect();//获取view的边界及位置信息
    query.exec(function (res) {
      that.setData({
-       textheight: res[0].height + "px"
+       textheight: res[0].height+ "px"
      });
+     console.log(that.data.textheight);
    
  })
  },

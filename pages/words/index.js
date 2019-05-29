@@ -16,7 +16,7 @@ Page({
   },
 
  
-  onLoad:function(){
+  onShow:function(){
     let that = this;
     let gbd = getApp().globalData;
     wx.request({
@@ -155,6 +155,12 @@ Page({
     }
   },
   
-  
+  onHide:function(e){
+    let that=this;
+    that.setData({
+      recvmessages: [],
+      sendmessages: [],
+    })
+  }
 
 })

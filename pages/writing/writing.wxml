@@ -8,14 +8,15 @@
      </view>
      <view class="separator"/>
      <view class="content" id="textwrap">
-        <textarea maxlength="800" style="height:{{textheight}};"  placeholder="{{contentcontent}}"
+        <textarea maxlength="1500" style="height:{{textheight}};"  placeholder="{{contentcontent}}"
           fixed="true"  class="textarea" bindinput='isWriting'/>
      </view>
      <view class='maskLayer' wx:if="{{chooseSize}}" bindtap='hideModal'></view>
      <view class='ways' wx:if="{{chooseSize}}" animation='{{animationData}}'>
        <view style="margin-left:2%;display:flex;flex-direction:column">
         <text>开启方式</text>
-        <text style="font-size:30rpx;color:gray;">定时开启表示到达固定天数后信件自动开启</text>
+        <text style="font-size:30rpx;color:gray;text-align:right;">写信开启表示对方以信件交换此信</text>
+        <text style="font-size:30rpx;color:gray;text-align:right;">定时开启表示到达固定天数后信件自动开启</text>
         <view class="divideline3"/>
         <checkbox-group  bindchange="checkboxChange">
           <view style="display:block">

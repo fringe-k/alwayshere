@@ -66,14 +66,14 @@ page{
 }
 
 .text{
-  margin-top:5%;
+  
   width:100%;
-  font-size:25rpx;
+  font-size:23rpx;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   text-align: center;
-  line-height: 1cm;
+  line-height: 40rpx;
 }
 .choose-image{
   width:60%;
