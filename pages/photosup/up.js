@@ -70,7 +70,7 @@ Page({
             },
           });
           wx.redirectTo({
-            url: '../photos/photos',
+            url: '../main/main',
           })
         }
       }

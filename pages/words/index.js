@@ -10,7 +10,9 @@ Page({
     ],
     sendmessages:[
     ],
-    currentTab: 0
+    currentTab: 0,
+    chooseSize: false,
+    animationData: {}
   },
 
  
@@ -109,6 +111,7 @@ Page({
   },
   /*write to read*/
   write: function (e) {
+    let that=this;
     if(e.currentTarget.dataset.needreply) {
       wx.showModal({
         title: '提示',
@@ -130,13 +133,28 @@ Page({
       })
     }
     else{
-      wx.showToast({
+      /*wx.showToast({
         title: '还没到那一天',
-        icon: 'loading',
+        icon: '',
         duration: 1000
+      })*/
+      if (!this.data.show) {
+        let that = this;
+        this.setData({
+          show: 1
+        })
+        setTimeout(function () {
+          that.setData({
+            show: 0
+          })
+        }, 2000)
+      }
+      that.setData({
+        chooseSize:true
       })
     }
   },
+  
   
 
 })

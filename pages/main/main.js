@@ -10,27 +10,26 @@ Page({
     togetherdate: 0,
     nextdate: 0,
     addImg:"",
-    avatarUrl:""
+    avatarUrl:"",
+    res:""
   },
-  onLoad: function (options) {
+  onShow: function (options) {
     let that = this;
     let gbd = getApp().globalData;
     that.setData({
       addImg: gbd.host + "/resource/image/add",
-      avatarUrl: gbd.userInfo.avatarUrl
+      avatarUrl: gbd.userInfo.avatarUrl,
+      res: gbd.memorialDayInfo
     })
-    wx.request({
-      method: "Get",
-      url: gbd.host + "/pair/memorialDay",
-      header: gbd.cookieHeader,
-      success:function(res){
-        var TIME = util.formatTime(new Date());
-        that.setData({
-          togetherdate: (TIME - res.memorialDay) > 0 ? (TIME - res.memorialDay > 0):0,
-          nextdate: ( res.nextMeetDay-TIME > 0) ? (TIME - res.memorialDay > 0) : 0,
-        })
-      }
+    var TIME = util.formatTime(new Date());
+    var mem = new Date((that.data.res.memorialDay).replace(/-/g, "/"));
+    var nex = new Date((that.data.res.nextMeetDay).replace(/-/g, "/"));
+    var time = new Date(TIME);
+    that.setData({
+      togetherdate: (time - mem) > 0 ? parseInt( (time - mem)/(1000 * 3600 * 24)): 0,
+      nextdate: (nex - time) > 0 ? parseInt((nex - time) / (1000 * 3600 * 24) ): 0,
     })
+    
   },
   toPageInfo: function () {
     wx.navigateTo({

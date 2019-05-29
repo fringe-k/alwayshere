@@ -21,8 +21,9 @@
            </view>
         </scroll-view>
         <button bindtap='toWriting' class="circle"></button>
-    </swiper-item>
-    <swiper-item class="swiper-item">
+     
+  </swiper-item>
+  <swiper-item class="swiper-item">
       <scroll-view scroll-y="true" class="scroll2">
         <view wx:for="{{sendmessages}}" wx:key="poperty" >
              <view  class="btn-open" bindtap="read" id="{{item.id}}">
@@ -33,3 +34,4 @@
       </scroll-view>
     </swiper-item>  
 </swiper>
+<view class='notyet {{show?"show":""}}'>还没到那一天哦~</view>

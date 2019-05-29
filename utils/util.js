@@ -37,6 +37,14 @@ var dateSort= function (array) {
   }
   return array
 };
+var timeStr=function(time){
+  var stringTime = time;
+  var timestamp2 = Date.parse(new Date(stringTime));
+  var newDate = new Date();
+  newDate.setTime(timestamp2) 
+  time = newDate.getFullYear() + "年" + (newDate.getMonth() + 1) + "月" + newDate.getDate() + "日"
+  return time;
+}
 
 var replySort = function (array) {
   var dateToTime = function (str) {
@@ -67,5 +75,6 @@ module.exports = {
   formatDate:formatDate,
   dateSort:dateSort,
   replySort: replySort,
-  formulaTime: formulaTime
+  formulaTime: formulaTime,
+  timeStr: timeStr
 };

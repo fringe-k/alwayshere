@@ -1,29 +1,32 @@
 <view class="background"/>
-<view  wx:if="hasNotLoad" class="history-news">
+<view  wx:if="{{hasNotLoad}}" class="history-news">
     <text class="text-show">{{today}}</text>
     <view class="divideline2"/>
     <view class="photo-area">
-        <view class="my" bindtap='toPhotoUp'>
-            <image src="{{addImg}}" class="photo"/>
+        <view class="my" bindtap='toPhotoUp' >
+            <view style="height:200rpx;width:200rpx;text-align:center;" >
+               <image src="{{cameraImg}}" class="photo" mode="aspectFill" style="height:150rpx;width:150rpx;"/>
+            </view>
+            <text class="text">分享一下你的今天吧</text>
         </view>
-        <view class="and"/>
-        <view class="ta" data-img="{{img2}}" data-text="{{text2}}" id="1">
-            <image src="{{img2}}" class="photo"/>
+        <view class="and"/> 
+        <view class="ta" data-img="{{img2}}" data-text="{{text2}}" id="1"  bindtap='toDetail'>
+            <image src="{{img2}}" class="photo" mode="aspectFill"/>
             <text class="text">{{text2}}</text>
         </view>
     </view>
 </view>
 <view wx:for="{{history}}" wx:key="poperty" class="history-news"  >
-       <text class="text-show">{{item.year}}年{{item.month}}月{{item.day}}日</text>
+       <text class="text-show">{{item.date}}</text>
        <view class="divideline2"/>
        <view class="photo-area">
          <view class="my" bindtap='toDetail' data-img="{{item.img1}}" data-text="{{item.text1}}" id="0">
-            <image src="{{item.img1}}" class="photo"/>
+            <image src="{{item.img1}}" class="photo" mode="aspectFill"/>
             <text class="text">{{item.text1}}</text>
          </view>
-         <view class="and"/>
+      
          <view class="ta" bindtap='toDetail'  data-img="{{item.img2}}" data-text="{{item.text2}}" id="1">
-           <image src="{{item.img2}}" class="photo"/>
+           <image src="{{item.img2}}" class="photo" mode="aspectFill"/>
            <text class="text">{{item.text2}}</text>
          </view>
        </view>

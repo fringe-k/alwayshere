@@ -2,7 +2,7 @@
  <view  class="circle">
     <image class="portrait-image" src="{{avatarUrl}}"></image>
 </view>
-<view class="detail">
-    <image class="portrait-image2" src="{{avatarUrl}}"></image>
+<view class="detail" bindtap="view">
+    <image class="portrait-image2" src="{{img}}" mode="aspectFit"></image>
     <text class="text">{{text}}</text>
 </view>

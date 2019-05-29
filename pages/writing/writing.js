@@ -139,21 +139,20 @@ daysPickerChange:function(e){
        errormessage:true
      })
    }
+    console.log(that.data.errormessage)
     if (that.data.errormessage)
     {
-      wx.showModal({
-        title: '提示',
-        content: '请选择开启方式',
-        cancelText: "取消",
-        confirmText: "确定",
-        success: function (res) {}   
-          });
+      wx.showToast({
+        title: '请选择收信方式',
+        icon: 'none',
+        duration: 1000
+      })
       that.setData({
         errormessage: false
       })
     }
    else {
-      var TIME = util.formatTime(new Date());
+     var TIME = util.formatTime(new Date());
       console.log(TIME);
       wx.request({
         method: "Post",
@@ -186,10 +185,11 @@ daysPickerChange:function(e){
         animationData: animation.export(),
         chooseSize: false
       })
-    }
-    wx.redirectTo({
-      url: '../words/index',
-    })
+      wx.redirectTo({
+        url: '../words/index',
+      })
+    };
+  
   },
 
 })

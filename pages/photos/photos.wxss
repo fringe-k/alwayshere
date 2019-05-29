@@ -24,7 +24,7 @@ page{
   font-size:30rpx;
   font-weight: 600;
   margin-left:5%;
-  margin-top:5%;
+  margin-top:8%;
 }
 .divideline2{
   margin-top: 10rpx;
@@ -38,6 +38,7 @@ page{
   width:100%;
   height:100%;
   align-items: center;
+
   
 }
 .my{
@@ -46,6 +47,8 @@ page{
   display:flex;
   flex-direction:column;
   align-items: center;
+  margin-left:5%;
+  
 }
 .ta{
   width:35%;
@@ -53,21 +56,15 @@ page{
   display:flex;
   flex-direction:column;
   align-items: center;
+  margin-left:5%
  
 }
 .photo{
   height:200rpx;
   width:200rpx;
-}
-.and{
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABYUlEQVR4Xu2aQW4CMQxF7cwB2iMgsayQ5gbQG5Ud7QHa7sqNgBtUQl1W4ghwgBlXjCo2ZJOMsILyWBM5+fm246dRqfynlZ9fEAAHVK4AKVC5ASiCpAApULkCpIC3AX4mb20Qe4jF7UVPT4f3b889uTtgP33dqug8dkgT281+PxYI4KgADnAUewhFClADKIJ0Adog7wAeQrwEeQpHFGAWYBi6g2nwPM9bY1+5M4SZtqryGK0BJkdVy+YB2ukylSckT4P7yWqhTdjkCnDLddb1z7PD5zYlBgKkqDWMsziAFKAGVF0Ez22wb2ydWjsu/zdpVTWKxc3sJCrZbTB0+nLzNph98P+FMEGYIEwQJggThAnCBGGCMEGY4LUCQFGg6B1AUYahkQpUPw0OPEH6KBYPEo6p8/zI++Bj6WQsPlbx0tYjQGk34r0fHOCteGnxcEBpN+K9HxzgrXhp8XBAaTfivZ8/vXgtUOeR1VUAAAAASUVORK5CYII=");
-  background-size: cover;
 
 }
-.and{
-  width:100rpx;
-  height:100rpx;
-}
+
 .text{
   margin-top:5%;
   width:100%;
@@ -76,6 +73,7 @@ page{
   text-overflow: ellipsis;
   white-space: nowrap;
   text-align: center;
+  line-height: 1cm;
 }
 .choose-image{
   width:60%;
@@ -135,3 +133,4 @@ page{
   z-index: 1000;
   color: #fff;
 }
+

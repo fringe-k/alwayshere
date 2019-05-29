@@ -6,7 +6,8 @@ Page({
     history: [
     ],
     today: "",
-    addImg: null,
+    cameraImg: null,
+    noPhotoImg:null,
     hasNotLoad: true,
     choose: false,
     chooseSize: false,
@@ -21,172 +22,187 @@ Page({
     let that = this;
     let gbd = getApp().globalData;
     that.setData({
-      addImg: gbd.host + "/resource/image/add",
+      cameraImg: gbd.host + "/resource/image/camera",
+      noPhotoImg: gbd.host + "/resource/image/noPhoto",
       userId: gbd.userInfo.id,
       otherId: gbd.theOtherUserInfo.id
     });
+
     wx.request({
       method: "Get",
       url: gbd.host + "/pair/records",
       header: gbd.cookieHeader,
       success: function (res) {
         var TIME = util.formatTime(new Date());
+        var ll=util.formulaTime(TIME);
         res.data = util.dateSort(res.data)
-        console.log(res.data);
         let j = 0;
-        if (res.data[0].weUserId == that.data.userId || res.data[1].weUserId == that.data.userId) {
+        if (res.data[0].weUserId == that.data.userId && res.data[0].date == ll) {
+            that.setData({
+              hasNotLoad: false
+            });
+        }
+        if (res.data[1].weUserId == that.data.userId && res.data[1].date == ll) {
           that.setData({
             hasNotLoad: false
-          })
-          for (let i = 0; i < res.data.length; i++) {
-            if (i ==0) {
-              if (res.data[i].weUserId == that.data.userId) {
-                var l = {
-                  date: res.data[i].date,
-                  img1: gbd.host + "/uploaded?path=" + res.data[i].recSrc,
-                  text1: res.data[i].attachText,
-                  img2: that.data.addImg,
-                  text2: ""
-                };
-               that.data. history.push(l)
-              } else {
-                var l = {
-                  date: res.data[i].date,
-                  img2: gbd.host + "/uploaded?path=" +  res.data[i].recSrc ,
-                  text2: res.data[i].attachText,
-                  img1: that.data.addImg,
-                  text1: ""
-                };
-                that.data. history.push(l)
-              }
-            } else {
-              if (res.data[i].date == res.data[i - 1].date) {
-                if (res.data[i].weUserId == that.data.userId) {
-                  that.data.history[j].img1 = gbd.host + "/uploaded?path=" +  res.data[i].recSrc;
-                  that.data. history[j].text1 = res.data[i].attachText;
-                } else {
-                  that.data.history[j].img2 = gbd.host + "/uploaded?path=" + res.data[i].recSrc ;
-                  that.data.history[j].text2 = res.data[i].attachText;
-                }
-                j = j + 1;
-              } else {
-                j = j + 1;
-                if (res.data[i].weUserId == that.data.userId) {
-                  var l = {
-                    date: res.data[i].date,
-                    img1: gbd.host + "/uploaded?path="+ +res.data[i].recSrc,
-                    text1: res.data[i].attachText,
-                    img2: that.data.addImg,
-                    text2: ""
-                  };
-                  that.data.history.push(l)
-                } else {
-                 var l = {
-                    date: res.data[i].date,
-                   img2: gbd.host + "/uploaded?path=" + res.data[i].recSrc ,
-                    text2: res.data[i].attachText,
-                    img1: that.data.addImg,
-                    text1: ""
-                  };
-                  that.data.history.push(l)
-                }
-              }
-            }
-          }
-          that.setData({
-            history: that.data.history
-          })
+          });
         }
-      /*  else {
-          if (res.data[0].weUserId== that.data.otherId) {
-            that.setData({
-              img2: res.data[0].recType,
-              text2: res.data[0].attachText
-            })
-          }
-          else {
-            that.setData({
-              img2: that.data.addImg,
-              text2: ""
-            })
+        console.log(res.data)
+          if(!that.data. hasNotLoad) {       
             for (let i = 0; i < res.data.length; i++) {
-              if (i = 0) {
+              
+            
+              if (i == 0) {
                 if (res.data[i].weUserId == that.data.userId) {
                   var l = {
-                    date: res.data[i].date,
-                    img1: res.data[i].recSrc,
+                    date: util.timeStr(res.data[i].date),
+                    img1: gbd.host + "/resource/uploaded?path=" + res.data[i].recSrc.split('\\').join('%2f'),
                     text1: res.data[i].attachText,
-                    img2: that.data.addImg,
-                    text2: ""
+                    img2: that.data.noPhotoImg,
+                    text2: "Ta今天还没上传~"
                   };
-                  that.datahistory.push(l)
+                  that.data.history.push(l)
                 } else {
                   var l = {
-                    date: res.data[i].date,
-                    img2: res.data[i].recSrc,
+                    date: util.timeStr(res.data[i].date),
+                    img2: gbd.host + "/resource/uploaded?path=" + res.data[i].recSrc.split('\\').join('%2f'),
                     text2: res.data[i].attachText,
-                    img1: that.data.addImg,
-                    text1: ""
+                    img1: that.data.noPhotoImg,
+                    text1: "Ta今天还没上传~"
                   };
-                  that.datahistory.push(l)
+                  that.data.history.push(l)
                 }
               } else {
                 if (res.data[i].date == res.data[i - 1].date) {
                   if (res.data[i].weUserId == that.data.userId) {
-                    that.datahistory[j].img1 = res.data[i].recSrc;
-                    that.datahistory[j].text1 = res.data[i].attachText;
+                    that.data.history[j].img1 = gbd.host + "/resource/uploaded?path=" + res.data[i].recSrc.split('\\').join('%2f');
+                    that.data.history[j].text1 = res.data[i].attachText;
                   } else {
-                    that.datahistory[j].img2 = res.data[i].recSrc;
-                    that.datahistory[j].text2 = res.data[i].attachText;
+                    that.data.history[j].img2 = gbd.host + "/resource/uploaded?path=" + res.data[i].recSrc.split('\\').join('%2f');
+                    that.data.history[j].text2 = res.data[i].attachText;
                   }
-                  j = j + 1;
+
                 } else {
-                  j = j + 1;
+                  
                   if (res.data[i].weUserId == that.data.userId) {
-                   var l = {
-                      date: res.data[i].date,
-                      img1: res.data[i].recSrc,
+                    var l = {
+                      date: util.timeStr(res.data[i].date),
+                      img1: gbd.host + "/resource/uploaded?path=" + res.data[i].recSrc.split('\\').join('%2f'),
                       text1: res.data[i].attachText,
-                      img2: that.data.addImg,
-                      text2: ""
+                      img2: that.data.noPhotoImg,
+                      text2: "Ta今天还没上传~"
                     };
-                    that.datahistory.push(l)
+                    that.data.history.push(l)
                   } else {
-                   var l = {
-                      date: res.data[i].date,
-                      img2: res.data[i].recSrc,
+                    var l = {
+                      date: util.timeStr(res.data[i].date),
+                      img2: gbd.host + "/resource/uploaded?path=" + res.data[i].recSrc.split('\\').join('%2f'),
                       text2: res.data[i].attachText,
-                      img1: that.data.addImg,
-                      text1: ""
+                      img1: that.data.noPhotoImg,
+                      text1: "Ta今天还没上传~"
                     };
-                    that.datahistory.push(l)
+                    that.data.history.push(l)
                   }
+                  j = j + 1;
                 }
               }
             }
             that.setData({
               history: that.data.history
             })
+            console.log(that.data.history)
+
           }
-        }*/
+          /***** */
+          else {
+            j=-1;
+            var jk=0;
+            if (res.data[0].weUserId == that.data.otherId && res.data[0].date == ll) {
+            that.setData({
+              img2: gbd.host + "/resource/uploaded?path=" + res.data[0].recSrc.split('\\').join('%2f'),
+              text2: res.data[0].attachText
+            })
+             jk = 1;
+          } else {
+            that.setData({
+              img2: that.data.noPhotoImg,
+              text2: "Ta今天还没上传~"
+            })
+             jk = 0;
+          }
+          for (let i = jk; i < res.data.length; i++) {
+            if (i == 0)  {
+              if (res.data[i].weUserId == that.data.userId) {
+                var l = {
+                  date: util.timeStr(res.data[i].date),
+                  img1: gbd.host + "/resource/uploaded?path=" + res.data[i].recSrc.split('\\').join('%2f'),
+                  text1: res.data[i].attachText,
+                  img2: that.data.noPhotoImg,
+                  text2: "Ta今天还没上传~"
+                };
+                that.data.history.push(l)
+                
+              } else {
+                var l = {
+                  date: util.timeStr(res.data[i].date),
+                  img2: gbd.host + "/resource/uploaded?path=" + res.data[i].recSrc.split('\\').join('%2f'),
+                  text2: res.data[i].attachText,
+                  img1: that.data.noPhotoImg,
+                  text1: "Ta今天还没上传~"
+                };
+                that.data.history.push(l)   
+              }
+            } 
+            else {
+              if (res.data[i].date == res.data[i-1].date) {
+                
+                if (res.data[i].weUserId == that.data.userId) {
+          that.data.history[j].img1 = gbd.host + "/resource/uploaded?path=" + res.data[i].recSrc.split('\\').join('%2f');
+                  that.data.history[j].text1 = res.data[i].attachText;
+                } else {
+          that.data.history[j].img2 = gbd.host + "/resource/uploaded?path=" + res.data[i].recSrc.split('\\').join('%2f');
+                  that.data.history[j].text2 = res.data[i].attachText;
+                }
+                j = j + 1;
+              } else {
+
+                if (res.data[i].weUserId == that.data.userId) {
+                  var l = {
+                    date: util.timeStr(res.data[i].date),
+                    img1: gbd.host + "/resource/uploaded?path=" + res.data[i].recSrc.split('\\').join('%2f'),
+                    text1: res.data[i].attachText,
+                    img2: that.data.noPhotoImg,
+                    text2: "Ta今天还没上传~"
+                  };
+                  that.data.history.push(l)
+
+                } else {
+                  var l = {
+                    date: util.timeStr(res.data[i].date),
+                    img2: gbd.host + "/resource/uploaded?path=" + res.data[i].recSrc.split('\\').join('%2f'),
+                    text2: res.data[i].attachText,
+                    img1: that.data.noPhotoImg,
+                    text1: "Ta今天还没上传~"
+                  };
+                  that.data.history.push(l)
+                }
+                j=j+1
+              }
+            }
+          }
+          that.setData({
+            history: that.data.history
+          })
+          
+        }
       }
+      
     });
 
-    for (let i = 0; i < that.data.history.length; i++) {
-      var stringTime = that.data.history[i].date;
-      var timestamp2 = Date.parse(new Date(stringTime));
-      var newDate = new Date();
-      newDate.setTime(timestamp2);
-      var myyear = "history[" + i + "].year";
-      var mymonth = "history[" + i + "].month";
-      var myday = "history[" + i + "].day";
-      that.setData({
-        [myyear]: newDate.getFullYear(),
-        [mymonth]: newDate.getMonth() + 1,
-        [myday]: newDate.getDate()
-      });
+  },
 
-    }
+  onShow:function(e){
+     let that=this;
     /*below is today*/
     var timestamp = Date.parse(new Date());
     var date = new Date(timestamp);
@@ -200,7 +216,6 @@ Page({
     that.setData({
       today: string
     })
-
   },
   chooseWays: function (e) {
 
@@ -248,8 +263,12 @@ Page({
     })
   },
   toDetail: function (e) {
+    console.log(e)
+    let that = this;
+    let gbd = getApp().globalData;
+    gbd.currentImg = e.currentTarget.dataset.img;
     wx.navigateTo({
-      url: '../detail/detail?img=' + e.currentTarget.dataset.img + '&text=' + e.currentTarget.dataset.text + '&id=' + e.currentTarget.id
+      url: "../detail/detail?id=" + e.currentTarget.id + "&text=" + e.currentTarget.dataset.text 
     })
   }
 
