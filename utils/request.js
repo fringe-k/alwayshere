@@ -87,7 +87,6 @@ class Request {
                                 if (res.statusCode === 200) {
                                     data.theOtherUserInfo = res.data;
                                 }
-                                resolve();
                             }
                         });
                     }
@@ -108,8 +107,8 @@ class Request {
                 success(res) {
                     if (res.statusCode === 200) {
                         data.memorialDayInfo = res.data;
-                        resolve(res.data);
                     }
+                    resolve(res.data);
                 }
             });
         });
