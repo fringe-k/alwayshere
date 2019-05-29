@@ -55,4 +55,5 @@ page{
   word-wrap: break-word;
   font-size:20px;
   text-align: center;
+  margin-top:30rpx;
   }
